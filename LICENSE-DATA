@@ -30,8 +30,24 @@ promise something the repository does not contain.
 
 `release_data/README.md` carries a manifest with the size and SHA-256 of every released file.
 
-Every released row carries the **DOI of the publication the value came from**, so
-any value can be traced to its source and checked.
+## Provenance: what is traceable, and to what
+
+The corpus table `data/Target_Materials/HEUSLER_KAPPA_TRAINING_SET.csv` carries the provenance
+columns `source`, `source_doi`, `source_url` and `source_location`. Precisely:
+
+| | |
+|---|---|
+| **all 4,094 experimental (tier-0) rows** | carry a `source_doi` — every measured value traces to the publication it came from |
+| 94.2 % of all 10,242 rows | carry a `source_url` |
+| 60.0 % of all rows | carry a `source_doi`; the remainder are calculated values from databases (AFLOW, Materials Project, JARVIS, OQMD), which are identified by URL rather than by DOI |
+| 48.7 % of rows | additionally carry `source_location`, the table or figure within the source |
+
+The derived files — `PAPER_PREDICTIONS.csv`, `CONDITIONAL_PREDICTIONS.csv`, `paper/evidence/*` and
+the result JSONs — are **per-compound summaries, not measurement rows**, so they carry no source
+DOI: a prediction does not come from a publication. Where they do report source counts, the column
+is a count (`n_doi`, and the `doi` column of `evidence_chain.csv`) rather than an identifier. To
+trace a number in those files back to literature, join on the compound against the corpus table
+above.
 
 ## What is NOT released, and why
 
