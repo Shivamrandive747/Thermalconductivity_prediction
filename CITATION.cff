@@ -1,0 +1,61 @@
+# Citation metadata. GitHub renders a "Cite this repository" button from this file, and Zenodo
+# reads it when minting the DOI, so the author list here must match the manuscript exactly.
+#
+# BEFORE THE RELEASE (see RELEASE.md for the full sequence):
+#   * add each author's ORCID below, in the form
+#       orcid: "https://orcid.org/0000-0002-1825-0097"
+#     Two authors here share the surname Randive, so the iDs are what keep their publication
+#     records from merging. Register free at orcid.org -- Stage 1 of RELEASE.md.
+#   * after Zenodo issues the DOI, paste it into `doi:` below and into \repourl in
+#     paper/manuscript.tex, then re-run: python check_tex_structure.py
+cff-version: 1.2.0
+title: >-
+  Calibrating first-principles lattice thermal conductivity to experiment:
+  a curated half-Heusler dataset and a validated transfer function
+message: If you use this dataset or code, please cite both the paper and this archive.
+type: dataset
+
+# Order must match the manuscript exactly: first author did the work, last author supervised.
+authors:
+  - given-names: Shivam
+    family-names: Randive
+    email: i22ph019@phy.svnit.ac.in
+    orcid: "https://orcid.org/0009-0005-1403-4484"
+    affiliation: >-
+      Department of Physics, Sardar Vallabhbhai National Institute of Technology,
+      Surat, India
+  - given-names: Ojaswini
+    family-names: Randive
+    affiliation: >-
+      Department of Metallurgical and Materials Engineering, National Institute of Technology Raipur, Raipur, Chhattisgarh, India
+  - given-names: Himanshu
+    family-names: Pandey
+    affiliation: >-
+      Department of Physics, Sardar Vallabhbhai National Institute of Technology,
+      Surat, India
+
+abstract: >-
+  A curated, provenance-tracked corpus of half-Heusler lattice thermal
+  conductivity in which laboratory measurements and first-principles transport
+  calculations are tiered separately and never pooled, together with a
+  two-parameter transfer function that maps a published Boltzmann-transport
+  calculation onto the experimental scale. Published calculations exceed measured
+  values by a median factor of 1.55; within a declared domain of applicability the
+  correction places 86.8 per cent of held-out compounds within a factor of two of
+  measurement under leave-one-chemistry-out validation.
+
+keywords:
+  - half-Heusler
+  - lattice thermal conductivity
+  - thermoelectric materials
+  - Boltzmann transport
+  - machine learning
+  - materials data
+  - experimental validation
+
+license: MIT
+license-url: https://github.com/SHIVAM-REPO-OWNER/REPO-NAME/blob/main/LICENSE
+repository-code: https://github.com/SHIVAM-REPO-OWNER/REPO-NAME
+version: 1.0.0
+date-released: "2026-09-07"
+# doi: 10.5281/zenodo.XXXXXXX    <- uncomment and fill in after the Zenodo release

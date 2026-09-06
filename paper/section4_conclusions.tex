@@ -1,0 +1,45 @@
+% =============================================================================================
+% SECTION 4 -- CONCLUSIONS.  Draft 2.
+%
+% Follows the blueprint's conclusion shape: restate the stakes, restate the bottleneck, name the
+% need, say what we did, say what validates it, say what it is for, and save the payoff line for
+% last. Their conclusion carries counts but NO error statistics -- the numbers live in the
+% abstract and the results table, and repeating them here reads as a summary rather than a close.
+% Ours keeps two (the offset and the within-2x rate) because they are the claim itself, and drops
+% the other four the previous draft restated.
+%
+% The last sentence is the one thing here that appears nowhere else in the paper.
+% =============================================================================================
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+Lattice thermal conductivity is the quantity that decides whether a half Heusler is worth
+synthesising, and it is also the quantity first-principles transport theory is most often asked to
+supply. Because converged calculations are expensive, the field has increasingly reproduced them
+with machine-learned surrogates trained on calculated labels---which are what exist in
+quantity. The result is a literature of models that predict a calculation accurately and a
+measurement only incidentally.
+
+We have shown that the two scales differ by a knowable amount. Across half Heuslers for which both a
+published transport calculation and a laboratory measurement exist, the calculation exceeds the
+measurement by a median factor of \num{1.55}, one-sidedly and in every bonding family, and the
+offset is regular enough to be removed by a closed-form correction with two parameters. Fitting that
+correction required a corpus that does not average the two quantities together, so we built one:
+\num{52} measured half Heuslers drawn from \num{164} publications alongside \num{289} carrying
+transport calculations, every value tiered by the method that produced it.
+
+Validated with each compound's entire chemistry withheld from the model and from the calibration
+alike, and inside a domain of applicability declared before the validation set was scored, the
+correction places \SI{86.8}{\percent} of held-out compounds within a factor of two of measurement
+and orders them reliably. Outside that domain it fails, by a factor we report rather than conceal.
+It is a screen and not a curve predictor: it says what a laboratory is likely to measure at a stated
+temperature, and its parameters should not be read as a measurement of microstructure. On that basis
+we issue five predictions and decline eleven candidates, naming the condition each fails.
+
+The five are falsifiable by a single synthesis each, and we would regard a failure among them as
+more informative than the successes. The wider result is that the barrier to predicting more of them
+is no longer computational. Fourteen further candidates already carry sound calculations and wait
+only on five laboratory measurements across four bonding families---a smaller experimental
+programme than assembling the corpus required, and the point at which a calibration of this kind
+stops being limited by what has been calculated and starts being limited by what has been measured.

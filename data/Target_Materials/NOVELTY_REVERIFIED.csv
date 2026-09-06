@@ -1,0 +1,26 @@
+compound,reduced,in_training,in_pool,db_kappa_rows,paper_hits_with_kappa,example_doi,verdict,evidence
+HfFe2Ge,HfFe2Ge,False,False,0,0,,novel,
+GaCoMo,GaCoMo,False,False,0,0,,novel,
+ZrGeRu2,ZrGeRu2,False,False,0,0,,novel,
+FeGeMo,FeGeMo,True,True,0,0,,NOT NOVEL,training(3+); pool
+ZrGaCu,ZrGaCu,False,False,0,0,,novel,
+NbGaNi,NbGaNi,True,True,2,0,10.1103/physrevb.101.064301,NOT NOVEL,training(1+); pool; DB-kappa(2 DOI)
+NbInNi,NbInNi,True,True,0,0,,NOT NOVEL,training(2+); pool
+HfGeRu2,HfGeRu2,False,False,0,0,,novel,
+ScBiRu2,ScBiRu2,False,False,0,0,,novel,
+TaMn2Sb,TaMn2Sb,False,False,0,0,,novel,
+HfGaCu,HfGaCu,False,False,0,0,,novel,
+ScSbRu2,ScSbRu2,False,False,0,0,,novel,
+NbInRu2,NbInRu2,False,False,0,0,,novel,
+HfInCu,HfInCu,False,False,0,0,,novel,
+Mn2NbSb,Mn2NbSb,False,False,0,0,,novel,
+ScZn2In,ScZn2In,False,False,0,0,,novel,
+YZn2In,YZn2In,False,False,0,0,,novel,
+ZnGaCu2,ZnGaCu2,False,False,0,0,,novel,
+ZnCuGe,ZnCuGe,False,False,0,0,,novel,
+MnSbMo,MnSbMo,False,False,0,0,,novel,
+AgBiPd,AgBiPd,False,False,0,0,,novel,
+Cu2GePd,Cu2GePd,False,False,0,0,,novel,
+ZnSbPd,ZnSbPd,False,False,0,0,,novel,
+Zn2GaCu,Zn2GaCu,False,False,0,0,,novel,
+AlZnAg2,AlZnAg2,False,False,0,0,,novel,

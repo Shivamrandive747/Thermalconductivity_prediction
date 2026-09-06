@@ -1,0 +1,22 @@
+{
+  "reference": "EXPERIMENT (tier 0)",
+  "tier": 0,
+  "n_compounds": 69,
+  "n_flagged": 1,
+  "by_class": {
+    "half": {
+      "n": 51,
+      "median_ape": 60.87382768987431,
+      "within_30": 0.19607843137254902,
+      "within_2x": 0.5882352941176471,
+      "median_ratio": 1.385942042154951
+    },
+    "full": {
+      "n": 18,
+      "median_ape": 115.60081180020974,
+      "within_30": 0.05555555555555555,
+      "within_2x": 0.4444444444444444,
+      "median_ratio": 2.1560081180020974
+    }
+  }
+}

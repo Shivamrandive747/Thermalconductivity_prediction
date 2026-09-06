@@ -1,0 +1,138 @@
+{
+  "population": {
+    "compounds": 23,
+    "matched_compounds": 64,
+    "rows": 4121,
+    "T_range": [
+      200,
+      1200
+    ],
+    "min_pairs": 3
+  },
+  "within_2x": {
+    "pooled_pairs": 0.8994733762434172,
+    "per_compound_mean": 0.8782748445309395,
+    "per_compound_median": 0.9344688221709007
+  },
+  "n_pairs": 8545,
+  "median_disagreement_x": 1.3253047171100787,
+  "p90_disagreement_x": 2.0031321364663386,
+  "per_compound": [
+    {
+      "compound": "CuAgTe",
+      "pairs": 18,
+      "within_2x": 0.4444444444444444
+    },
+    {
+      "compound": "NbFeSb",
+      "pairs": 52,
+      "within_2x": 0.5192307692307693
+    },
+    {
+      "compound": "ScNiSb",
+      "pairs": 23,
+      "within_2x": 0.6086956521739131
+    },
+    {
+      "compound": "TiFe2Sn",
+      "pairs": 44,
+      "within_2x": 0.75
+    },
+    {
+      "compound": "TiCoSb",
+      "pairs": 1160,
+      "within_2x": 0.8267241379310345
+    },
+    {
+      "compound": "AlVFe2",
+      "pairs": 174,
+      "within_2x": 0.8333333333333334
+    },
+    {
+      "compound": "BaAgSb",
+      "pairs": 6,
+      "within_2x": 0.8333333333333334
+    },
+    {
+      "compound": "VFeSb",
+      "pairs": 127,
+      "within_2x": 0.8503937007874016
+    },
+    {
+      "compound": "TmNiSb",
+      "pairs": 7,
+      "within_2x": 0.8571428571428571
+    },
+    {
+      "compound": "TiNiSn",
+      "pairs": 2246,
+      "within_2x": 0.8797862867319679
+    },
+    {
+      "compound": "NbCoSn",
+      "pairs": 538,
+      "within_2x": 0.9089219330855018
+    },
+    {
+      "compound": "ZrNiSn",
+      "pairs": 3464,
+      "within_2x": 0.9344688221709007
+    },
+    {
+      "compound": "HfNiSn",
+      "pairs": 65,
+      "within_2x": 0.9538461538461539
+    },
+    {
+      "compound": "HfSnPt",
+      "pairs": 9,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "NbCoSb",
+      "pairs": 72,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "ErNiSb",
+      "pairs": 7,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "TaFeSb",
+      "pairs": 6,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "HfCoSb",
+      "pairs": 22,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "VGaFe2",
+      "pairs": 9,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "VCoSb",
+      "pairs": 39,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "YSbPt",
+      "pairs": 5,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "ZrCoBi",
+      "pairs": 6,
+      "within_2x": 1.0
+    },
+    {
+      "compound": "ZrCoSb",
+      "pairs": 439,
+      "within_2x": 1.0
+    }
+  ],
+  "note": "The 79.5% literal previously quoted is not computed anywhere in this repository. Use these figures and always state the weighting."
+}

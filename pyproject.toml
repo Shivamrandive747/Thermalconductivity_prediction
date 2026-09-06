@@ -1,0 +1,51 @@
+# Makes `pipeline` importable so the analysis scripts resolve their imports from anywhere.
+#
+# Every analysis script does `sys.path.insert(0, ".")` and then `from pipeline import ...`, which
+# works only when the working directory is the repository root. Installing the project with
+# `pip install -e .` removes that constraint and makes the failure mode ("ModuleNotFoundError:
+# pipeline") impossible rather than merely documented.
+#
+# Data paths inside the scripts are still relative to the repository root, so run the analysis
+# from the root. docs/REPRODUCE.md says so.
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "half-heusler-kappa-calibration"
+version = "1.0.0"
+description = "Calibrating first-principles lattice thermal conductivity to experiment for half-Heusler compounds"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Shivam Randive", email = "i22ph019@phy.svnit.ac.in" },
+    { name = "Ojaswini Randive" },
+    { name = "Himanshu Pandey" },
+]
+keywords = ["half-Heusler", "lattice thermal conductivity", "thermoelectric",
+            "Boltzmann transport", "materials informatics"]
+dependencies = [
+    "numpy>=2.2",
+    "scipy>=1.15",
+    "pandas>=2.3",
+    "scikit-learn>=1.7",
+    "catboost>=1.2",
+    "matplotlib>=3.10",
+    "pymatgen>=2025.10",
+    "openpyxl>=3.1",
+]
+
+[project.optional-dependencies]
+# Rerun the regressor comparison of Section 2.6.
+compare = ["lightgbm>=4.7"]
+# Rebuild the corpus from the public APIs instead of using the shipped curated tables.
+corpus = ["requests>=2.31", "tqdm>=4.66", "python-dotenv>=1.0", "matminer>=0.9"]
+# Re-run the LLM extraction described in Section 2.1. Needs a Gemini key and source PDFs.
+extract = ["google-genai>=1.0", "pydantic>=2.6", "pymupdf>=1.24", "pymupdf4llm>=0.0.17"]
+
+[tool.setuptools]
+# Only `pipeline` is a package. analysis/, corpus/ and checks/ are directories of runnable
+# scripts, not importable modules -- they are executed from the repository root.
+packages = ["pipeline", "pipeline.backends"]

@@ -1,0 +1,94 @@
+# Matplotlib style for Computational Materials Science (Elsevier) figures.
+#
+# Load with:  plt.style.use("paper/paperstyle.mplstyle")
+# Widths:     single column 90 mm, 1.5 column 140 mm, double column 190 mm
+#             -> use figsize.MM in figlib.py rather than typing inches
+#
+# The point of a shared style file is that six figures drawn on six different days still look like
+# they came from one paper. Every deviation from this style in an individual figure should be a
+# decision, not an accident.
+
+# ---- output -------------------------------------------------------------------------------
+# Vector by default. Elsevier accepts PDF and EPS; PDF keeps transparency and embeds fonts.
+savefig.format:        pdf
+savefig.dpi:           600
+savefig.bbox:          tight
+savefig.pad_inches:    0.02
+savefig.transparent:   False
+figure.dpi:            150
+pdf.fonttype:          42
+ps.fonttype:           42
+
+# ---- type ---------------------------------------------------------------------------------
+# 8 pt body, 7 pt ticks. Elsevier's floor is ~6 pt after reduction; 8 pt survives a 2x shrink.
+font.family:           sans-serif
+font.sans-serif:       Arial, Helvetica, DejaVu Sans
+font.size:             8
+axes.titlesize:        8
+axes.labelsize:        8
+xtick.labelsize:       7
+ytick.labelsize:       7
+legend.fontsize:       7
+figure.titlesize:      9
+mathtext.fontset:      dejavusans
+
+# ---- axes ---------------------------------------------------------------------------------
+axes.linewidth:        0.6
+axes.edgecolor:        222222
+axes.labelcolor:       111111
+axes.titlelocation:    left
+axes.titlepad:         4.0
+axes.labelpad:         2.5
+# Closed frame: the convention in physics and materials journals. An open two-spine axis
+# reads as a dashboard; a box with inward ticks reads as a figure in a paper.
+axes.spines.top:       True
+axes.spines.right:     True
+axes.axisbelow:        True
+axes.grid:             False
+grid.color:            DDDDDD
+grid.linewidth:        0.4
+grid.alpha:            0.8
+
+# Okabe-Ito: the standard colourblind-safe qualitative palette. Do not reorder -- adjacent pairs
+# were chosen to stay separable under deuteranopia and protanopia.
+axes.prop_cycle: cycler('color', ['0072B2', 'D55E00', '009E73', 'CC79A7', 'E69F00', '56B4E9', 'F0E442', '000000'])
+
+# ---- ticks --------------------------------------------------------------------------------
+xtick.direction:       in
+ytick.direction:       in
+xtick.top:             True
+ytick.right:           True
+xtick.minor.visible:   True
+ytick.minor.visible:   True
+xtick.major.size:      2.5
+ytick.major.size:      2.5
+xtick.minor.size:      1.5
+ytick.minor.size:      1.5
+xtick.major.width:     0.6
+ytick.major.width:     0.6
+xtick.minor.width:     0.4
+ytick.minor.width:     0.4
+xtick.color:           333333
+ytick.color:           333333
+
+# ---- lines and markers --------------------------------------------------------------------
+lines.linewidth:       1.0
+lines.markersize:      3.5
+lines.markeredgewidth: 0.5
+scatter.edgecolors:    white
+errorbar.capsize:      1.5
+
+# ---- legend -------------------------------------------------------------------------------
+legend.frameon:        False
+legend.handlelength:   1.4
+legend.handletextpad:  0.5
+legend.columnspacing:  1.0
+legend.borderaxespad:  0.3
+legend.labelspacing:   0.3
+
+# ---- figure -------------------------------------------------------------------------------
+figure.facecolor:      white
+axes.facecolor:        white
+figure.constrained_layout.use: True
+figure.constrained_layout.h_pad: 0.02
+figure.constrained_layout.w_pad: 0.02

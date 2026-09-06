@@ -1,0 +1,52 @@
+# Tier-B DOIs: references the manuscript needs that are NOT in the data pipeline.
+#
+# Almost all of these will be Introduction citations -- background on half Heuslers,
+# thermoelectrics, the Callaway model, the Kim-Snyder Lorenz parameterisation, CatBoost,
+# and the structure databases. That is exactly where fabricated citations would hide, so the
+# rule is stricter here, not looser:
+#
+#   1. FIND the paper by a real search (OpenAlex or Crossref). Never from memory.
+#   2. READ the abstract. A title can match a claim the paper does not make.
+#   3. RECORD the supporting sentence in claims_ledger.csv BEFORE adding the DOI here.
+#   4. Add the bare DOI below, one per line, then re-run build_bibliography.py.
+#
+# A DOI in this file with no corresponding ledger row will fail verify_citations.py.
+#
+# Format: bare DOI only, no URL prefix. Comments start with #.
+#
+# example:
+# 10.1038/nmat2090
+10.1080/27660400.2025.2506976
+10.1063/1.4812323
+10.1063/1.4908244
+10.1016/j.progsolidstchem.2011.02.001
+10.1038/s41524-020-00440-1
+10.1038/npjcompumats.2015.10
+10.1038/s41597-021-00974-z
+10.48550/arXiv.1706.09516
+10.1103/PhysRevX.4.011019
+10.1038/s41524-023-00964-2
+10.1038/s41467-018-04958-3
+10.1088/1361-6463/ab898e
+10.1038/ncomms9144
+10.1021/acsami.1c17378
+10.1021/acsaem.2c01400
+10.1021/acs.chemmater.4c01696
+10.1103/l92g-tkds
+10.1039/D1EE00442E
+10.1016/j.commatsci.2019.109155
+10.1038/s41598-017-14013-8
+10.1021/acs.chemmater.6b04179
+10.1103/PhysRevB.90.174107
+10.1038/s41524-017-0046-7
+10.1038/s41467-019-13297-w
+10.1103/PhysRevB.95.045202
+10.1103/PhysRev.113.1046
+10.1039/C8EE00306H
+10.1038/s41467-023-40492-7
+10.1002/smll.202502068
+10.1103/PhysRevB.109.174302
+
+10.1103/PhysRevB.96.161201
+10.1002/anie.201511737
+10.1515/htmp-2020-0079

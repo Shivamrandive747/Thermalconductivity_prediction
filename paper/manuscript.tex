@@ -1,0 +1,167 @@
+% =============================================================================================
+% Calibrating first-principles lattice thermal conductivity to experiment:
+% a curated half-Heusler dataset and a validated transfer function
+%
+% Target journal: Computational Materials Science (Elsevier), elsarticle class.
+%
+% TO COMPILE (Overleaf: upload this folder, set manuscript.tex as the main document):
+%     pdflatex manuscript  ->  bibtex manuscript  ->  pdflatex x2
+%
+% BEFORE SUBMITTING, run both gates from the repository root:
+%     python make_paper_numbers.py           regenerates every figure quoted in the text
+%     python verify_citations.py paper/manuscript.tex
+% The second fails on an undefined citation key, a DOI that no longer resolves, or a citation
+% with no recorded supporting sentence in claims_ledger.csv. All three are blocking.
+%
+% AUTHOR BLOCK IS A PLACEHOLDER. Fill in the name and any co-authors before sharing. The
+% affiliation is inferred from the corresponding e-mail domain and should be confirmed.
+% =============================================================================================
+
+% `authoryear` puts natbib in author-year mode, which contradicts \bibliographystyle{elsarticle-num}
+% below and renders the citations malformed. Every citation in this manuscript is a plain \cite --
+% there is no \citep or \citet anywhere -- so the numeric style is the one we want and the class
+% option is what has to go.
+\documentclass[preprint, 12pt]{elsarticle}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}      % author names carry o-slash, s-caron, l-stroke etc.
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[separate-uncertainty=true, detect-weight=true]{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+% Half Heuslers are written as \ce{ZrNiSn}; keep chemistry upright inside bold table cells.
+\sisetup{group-separator = {,}, group-minimum-digits = 4}
+
+% =============================================================================================
+% THE THREE THINGS THAT MUST BE FILLED IN BEFORE SUBMISSION.
+% All three are rendered into the PDF, so each is defined here rather than left inline where it
+% can be missed. check_tex_structure.py fails the build while any of them still says TO BE ADDED.
+% =============================================================================================
+% Authors are Shivam Randive (corresponding), Himanshu Pandey, Ojaswini Randive -- set in the
+% frontmatter below. Two things about that block still need confirming:
+%   1. The \ead is i22ph019@phy.svnit.ac.in, which is what this repository was worked from. It is
+%      attached to Shivam Randive as corresponding author. Confirm the address belongs to him.
+%   2. Ojaswini Randive's affiliation is unknown here and must not be guessed.
+\newcommand{\pandeyemail}{PROF. PANDEY EMAIL --- TO BE ADDED}
+\newcommand{\repourl}{\texttt{[REPOSITORY URL AND DOI --- TO BE ADDED]}}
+% Draft. Confirm the Google credit programme's exact name before submission -- funders and credit
+% schemes usually specify the wording they want to be acknowledged by, and getting it wrong is
+% worse than omitting it. Add any departmental or institutional support Prof. Pandey advises.
+\newcommand{\acknowledgementtext}{%
+  Corpus construction used Google Cloud credits, which funded the large-language-model extraction
+  of measurements from primary publications described in Section~\ref{sec:dataset}. We thank the
+  maintainers of the databases this work rests on---Starrydata2, AFLOW, the Materials Project,
+  JARVIS, OQMD, the Crystallography Open Database and the OPTIMADE consortium---whose curation
+  made an experiment-anchored corpus of this kind possible, and the authors of the \num{198}
+  experimental and \num{22} computational studies whose measurements and calculations are analysed
+  here.}
+
+\journal{Computational Materials Science}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Calibrating first-principles lattice thermal conductivity to experiment:
+       a curated half-Heusler dataset and a validated transfer function}
+
+% Author order follows the convention of the field: first author did the work, last author is the
+% senior/supervising author, middle authors contributed in between. The last position is the
+% SECOND most senior, not the least -- putting the supervisor in the middle of a three-author list
+% would place him in the weakest slot and imply the third author supervised the project.
+% Confirm this order with Prof. Pandey before submission; some departments prefer otherwise.
+% ORCID iDs are supplied to Elsevier through Editorial Manager at submission, not through the
+% .tex -- elsarticle has no \orcid macro and the publisher adds the iD badges from the submission
+% record. Kept here so they are not lost:
+%   Shivam Randive    0009-0005-1403-4484   (checksum verified)
+%   Ojaswini Randive  awaiting
+%   Himanshu Pandey   awaiting
+\author[svnit]{Shivam Randive\corref{cor1}}
+\ead{i22ph019@phy.svnit.ac.in}
+\author[nitrr]{Ojaswini Randive}
+\author[svnit]{Himanshu Pandey\corref{cor1}}
+\ead{\pandeyemail}
+\cortext[cor1]{Corresponding authors.}
+
+\affiliation[svnit]{organization={Department of Physics, Sardar Vallabhbhai National Institute
+                                  of Technology},
+                    city={Surat},
+                    country={India}}
+% Confirm the department's exact official name against the NIT Raipur website before submission:
+% affiliations are indexed verbatim by Scopus and Web of Science, so a paraphrase can detach the
+% paper from the institution's record.
+\affiliation[nitrr]{organization={Department of Metallurgical and Materials Engineering,
+                                  National Institute of Technology Raipur},
+                    city={Raipur},
+                    state={Chhattisgarh},
+                    country={India}}
+
+\input{section0_abstract}
+
+\end{frontmatter}
+
+\input{section1_introduction}
+\input{section2_methods}
+\input{section3_results}
+\input{section4_conclusions}
+
+\section*{Data availability}
+\label{sec:data-availability}
+
+The curated corpus, its provenance fields, the prediction list with its refusals, and the code that
+generates every figure and number in this paper are available at \repourl. The Starrydata snapshot
+used is cited separately so that the corpus can be regenerated exactly.
+
+The measurements analysed here are not ours. Across the whole corpus they were made in \num{198}
+publications---of which \num{164} lie behind the \num{52} measured half Heuslers the calibration is
+fitted to---and the transport calculations we calibrate come from a further \num{22}. All are
+included in the reference list below so that the provenance claim of Section~\ref{sec:dataset} can
+be checked rather than taken on trust. Every row of the released corpus carries the digital object
+identifier of the work it came from.
+
+\input{section7_provenance}
+
+% CRediT (Contributor Roles Taxonomy). Elsevier asks for this, and it is the modern answer to the
+% ambiguity of author order: it states who did what, so nobody has to infer contribution from
+% position in the list. Roles below are drawn from the standard fourteen-term taxonomy -- adjust
+% them to what each author actually did, and have each author confirm their own line.
+\section*{CRediT authorship contribution statement}
+
+\textbf{Shivam Randive:} Conceptualization, Methodology, Software, Formal analysis,
+Data curation, Investigation, Validation, Writing -- original draft.
+\textbf{Ojaswini Randive:} Visualization, Writing -- review \& editing.
+\textbf{Himanshu Pandey:} Supervision, Resources, Project administration,
+Writing -- review \& editing.
+
+\section*{Declaration of competing interest}
+
+The authors declare that they have no known competing financial interests or personal relationships
+that could have appeared to influence the work reported in this paper.
+
+% Elsevier requires this as a NAMED statement placed after the competing-interest declaration and
+% before the reference list. Check the journal's current author guide for the exact wording it
+% asks for, as the policy is revised periodically. Two rules are stable: an AI tool is never an
+% author, and use of AI in the RESEARCH (as opposed to the writing) belongs in the Methods --
+% which is why the LLM-assisted extraction is described in Section~\ref{sec:dataset} and not here.
+\section*{Declaration of generative AI and AI-assisted technologies in the writing process}
+
+During the preparation of this work the authors used Anthropic Claude to draft and revise
+manuscript text, to write analysis and figure-generation code, and to audit the manuscript for
+internal numerical consistency. Large language models were also used to extract measurements from
+primary publications during corpus construction; because that use is part of the research rather
+than the writing, it is described in Section~\ref{sec:dataset} together with the safeguards applied
+to it. After using these tools the authors reviewed and edited the content as needed and take full
+responsibility for the content of the published article.
+
+\section*{Acknowledgements}
+
+\acknowledgementtext
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}

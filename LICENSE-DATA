@@ -1,0 +1,60 @@
+# Data licence and redistribution scope
+
+The curated data files in this repository are released under the
+**Creative Commons Attribution 4.0 International Licence (CC BY 4.0)**:
+<https://creativecommons.org/licenses/by/4.0/>
+
+You may share and adapt them, including commercially, provided you give
+appropriate credit. Cite the paper and the Zenodo DOI (see `CITATION.cff`).
+
+## What is released
+
+Our own contribution: the curated, tiered, provenance-tracked values, and the
+code that produces them.
+
+**Note on paths.** `.gitignore` excludes `data/` wholesale — it runs to several gigabytes and contains publisher
+PDFs that must not be redistributed. The curated files therefore ship from two *tracked*
+directories instead, assembled by `build_release_data.py`. Naming a file under `data/` here would
+promise something the repository does not contain.
+
+| released | what it is |
+|---|---|
+| `release_data/predictions/PAPER_PREDICTIONS.csv` | the five issued predictions (Table 2) |
+| `release_data/predictions/CONDITIONAL_PREDICTIONS.csv` | the ten conditional estimates (Table S1) |
+| `release_data/results/*.json` | the fitted constants, nulls, ablations and conformal bands |
+| `paper/evidence/PROVEN_all_scored.csv` | per-compound blind-test scores |
+| `paper/evidence/blind_d2_s*.csv`, `*.json` | the five model seeds behind every seed-averaged figure |
+| `paper/evidence/evidence_chain.csv` | each reported number and the file that produces it |
+| `paper/` | the manuscript, the supplementary, and every figure script |
+| all `*.py` | the pipeline, the analysis and the gates |
+
+`release_data/README.md` carries a manifest with the size and SHA-256 of every released file.
+
+Every released row carries the **DOI of the publication the value came from**, so
+any value can be traced to its source and checked.
+
+## What is NOT released, and why
+
+We do **not** redistribute bulk copies of the upstream databases this corpus draws
+on. Those are other people's resources, published under their own terms, and
+mirroring them here would neither be ours to do nor useful:
+
+- **Starrydata2** — supplies about 95 % of the experimental rows. Obtain the
+  dated snapshot cited in the paper directly from the project; the harvest code
+  here rebuilds our tables from it.
+- **AFLOW** (AAPL and AGL), **Materials Project**, **JARVIS**, **OQMD**, **COD**
+  and OPTIMADE-federated sources — first-principles values and crystal
+  structures. Fetched through their public APIs by the scripts here.
+- **Publisher PDFs and full-text XML** under `data/pdfs/` — copyrighted by their
+  publishers and accessed under institutional subscription. These are excluded
+  by `.gitignore` and must never be redistributed.
+
+The scripts regenerate every table from those public sources, so the work is
+fully reproducible without us re-hosting anyone else's database.
+
+## Attribution you inherit
+
+If you use these data, you are also using the upstream sources above. Please cite
+them as well; the manuscript's reference list names every publication behind
+every measurement (198 experimental and 22 computational) precisely so that this
+is possible.

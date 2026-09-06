@@ -1,0 +1,445 @@
+{
+  "_generated": "2026-09-06T14:22:03+00:00",
+  "_source": "make_paper_numbers.py",
+  "_rule": "the manuscript quotes this file; nothing is typed by hand",
+  "corpus": {
+    "rows_all": 10242,
+    "compounds_all": 967,
+    "half_heuslers": 742,
+    "half_measured_tier0": 52,
+    "half_with_dft_tier1": 505,
+    "source_dois_behind_measured": 164
+  },
+  "blind_test": {
+    "compounds": 51,
+    "chemistry_clusters": 23,
+    "temperature_points": 333,
+    "holdout_unit": "X-site chemistry cluster (cluster_of)"
+  },
+  "headline": {
+    "threshold_free_published_protocol": {
+      "median_ape": 41.6,
+      "within_2x_pct": 76.2,
+      "uncorrected_baseline_ape": 52.6,
+      "winners_curse_pp": 10.3,
+      "seed_range": [
+        36.0,
+        43.1
+      ],
+      "n_seeds": 5,
+      "note": "seed-averaged; a single-seed nested figure is a draw, not an effect"
+    },
+    "unconditional": {
+      "median_ape": 43.0,
+      "within_2x_pct": 72.0,
+      "uncorrected_baseline_ape": 55.7,
+      "winners_curse_pp": 7.7,
+      "seed_range": [
+        38.3,
+        46.2
+      ],
+      "n_seeds": 5,
+      "note": "seed-averaged; a single-seed nested figure is a draw, not an effect"
+    }
+  },
+  "domain_of_applicability": {
+    "definition": "VEC = 18 (semiconducting) AND a cubic C1b record that is not polymorphic",
+    "screens_are_pre_existing": true,
+    "scopes": [
+      {
+        "scope": "all half Heuslers (no screen)",
+        "n": 51,
+        "c": 0.5,
+        "p": 0.95,
+        "median_ape": 35.8,
+        "within_2x": 78.4,
+        "uncorrected": 54.3
+      },
+      {
+        "scope": "VEC = 18",
+        "n": 43,
+        "c": 0.57,
+        "p": 0.85,
+        "median_ape": 31.0,
+        "within_2x": 83.7,
+        "uncorrected": 48.6
+      },
+      {
+        "scope": "VEC = 18 + cubic, non-polymorphic",
+        "n": 38,
+        "c": 0.51,
+        "p": 0.8,
+        "median_ape": 29.7,
+        "within_2x": 86.8,
+        "uncorrected": 49.0
+      },
+      {
+        "scope": "EXCLUDED by the screens",
+        "n": 13,
+        "c": 0.19,
+        "p": 0.75,
+        "median_ape": 39.5,
+        "within_2x": 53.8,
+        "uncorrected": 134.8
+      }
+    ],
+    "excluded_compounds": [
+      "BaAgSb",
+      "CuAgTe",
+      "LaSbPd",
+      "LiAlGe",
+      "LiAlSi",
+      "LiZnSb",
+      "MgAgSb",
+      "MgNiSb",
+      "NbCoSb",
+      "VCoSb",
+      "VFeSb",
+      "VNiSn",
+      "ZnNiSn"
+    ],
+    "HOW_TO_STATE": "quote the in-domain figure as the headline, with the unrestricted figure and the excluded compounds reported alongside; never quote the restricted number alone"
+  },
+  "nulls": {
+    "protocol": "leave-one-chemistry-cluster-out; the null's parameters and the model's calibration are both fitted on the training clusters only",
+    "n_compounds": 51,
+    "n_clusters": 23,
+    "predictors": {
+      "model + calibration": {
+        "median_ape": 33.7,
+        "within_2x_pct": 74.5,
+        "within_30_pct": 43.1
+      },
+      "null: constant kappa": {
+        "median_ape": 42.36,
+        "within_2x_pct": 66.7,
+        "within_30_pct": 31.4
+      },
+      "null: A*(T/300)^q": {
+        "median_ape": 42.06,
+        "within_2x_pct": 60.8,
+        "within_30_pct": 27.5
+      }
+    },
+    "paired_tests": {
+      "vs_power_law_null": {
+        "wilcoxon_p": 0.2981,
+        "model_better_pct": 58.8
+      },
+      "vs_constant_null": {
+        "wilcoxon_p": 0.7217,
+        "model_better_pct": 58.8
+      }
+    },
+    "rank_signal": {
+      "spearman": 0.379,
+      "p": 0.00616,
+      "n": 51,
+      "note": "does the model rank compounds better than chance?"
+    },
+    "HOW_TO_STATE": "better on every metric but NOT significantly on median; say 'underpowered at n=51 with heavy-tailed errors', never 'significant'"
+  },
+  "calibration": {
+    "form": "kappa_expt = kappa_BTE * min(c*(T/300)^p, 1)",
+    "c": 0.51,
+    "p": 0.8,
+    "c_observed_range": [
+      0.37,
+      0.54
+    ],
+    "c_range_note": "c moved across runs as the reference set changed by <2%; publish the value WITH this range",
+    "bands": {
+      "0.50": {
+        "multiply_divide": 1.31,
+        "empirical_coverage_pct": 50.0,
+        "factor_range_across_folds": [
+          1.3,
+          1.33
+        ]
+      },
+      "0.80": {
+        "multiply_divide": 1.92,
+        "empirical_coverage_pct": 81.6,
+        "factor_range_across_folds": [
+          1.83,
+          1.92
+        ]
+      },
+      "0.90": {
+        "multiply_divide": 2.24,
+        "empirical_coverage_pct": 92.1,
+        "factor_range_across_folds": [
+          2.0,
+          2.24
+        ]
+      }
+    }
+  },
+  "rejected_interventions": {
+    "hurdle_model": "-1.3 pp on experiment, p=0.84 (halves low-kappa error on DFT labels only)",
+    "magnitude_calibration_beta": "design half picked it 47/60, lost out of sample",
+    "tier0_experimental_data": "+5.5 pp but p=0.10; transition-metal subset worse",
+    "doped_compound_data": "no gain, p>=0.10",
+    "per_family_calibration": {
+      "leave-one-COMPOUND-out": {
+        "n": 51,
+        "n_family_available": 40,
+        "median_global": 35.75083503146927,
+        "median_family": 35.27974467856331,
+        "within2x_global": 78.43137254901961,
+        "within2x_family": 78.43137254901961,
+        "wilcoxon_p": 0.09112075750402696,
+        "family_better_n": 22
+      },
+      "leave-one-CHEMISTRY-out": {
+        "n": 51,
+        "n_family_available": 40,
+        "median_global": 33.70260591284679,
+        "median_family": 35.27974467856331,
+        "within2x_global": 74.50980392156863,
+        "within2x_family": 78.43137254901961,
+        "wilcoxon_p": 0.08837783808945388,
+        "family_better_n": 22
+      }
+    }
+  },
+  "predictions": {
+    "ISSUED": [
+      {
+        "compound": "ErSbPt",
+        "family": "Sb-Pt",
+        "kappa_BTE_300": 7.18,
+        "kappa_pred_300": 3.66,
+        "lo50": 2.79,
+        "hi50": 4.79,
+        "lo90": 1.63,
+        "hi90": 8.2,
+        "n_bte_temps": 81,
+        "spacegroups": "[216]",
+        "note": NaN
+      },
+      {
+        "compound": "HoSbPt",
+        "family": "Sb-Pt",
+        "kappa_BTE_300": 7.0,
+        "kappa_pred_300": 3.57,
+        "lo50": 2.73,
+        "hi50": 4.68,
+        "lo90": 1.59,
+        "hi90": 8.0,
+        "n_bte_temps": 81,
+        "spacegroups": "[216]",
+        "note": NaN
+      },
+      {
+        "compound": "TmSbPt",
+        "family": "Sb-Pt",
+        "kappa_BTE_300": 5.86,
+        "kappa_pred_300": 2.99,
+        "lo50": 2.28,
+        "hi50": 3.92,
+        "lo90": 1.33,
+        "hi90": 6.7,
+        "n_bte_temps": 1,
+        "spacegroups": "[216]",
+        "note": NaN
+      },
+      {
+        "compound": "GdNiSb",
+        "family": "Ni-Sb",
+        "kappa_BTE_300": 8.38,
+        "kappa_pred_300": 4.27,
+        "lo50": 3.26,
+        "hi50": 5.59,
+        "lo90": 1.91,
+        "hi90": 9.56,
+        "n_bte_temps": 1,
+        "spacegroups": "[216]",
+        "note": NaN
+      },
+      {
+        "compound": "TbNiSb",
+        "family": "Ni-Sb",
+        "kappa_BTE_300": 9.06,
+        "kappa_pred_300": 4.62,
+        "lo50": 3.53,
+        "hi50": 6.05,
+        "lo90": 2.06,
+        "hi90": 10.35,
+        "n_bte_temps": 1,
+        "spacegroups": "[216]",
+        "note": NaN
+      }
+    ],
+    "FLAGGED": [
+      {
+        "compound": "DySbPd",
+        "family": "Sb-Pd",
+        "kappa_BTE_300": 7.67,
+        "kappa_pred_300": 3.91,
+        "lo50": 2.98,
+        "hi50": 5.12,
+        "lo90": 1.75,
+        "hi90": 8.76,
+        "n_bte_temps": 1,
+        "spacegroups": "[186, 194, 216]",
+        "note": "POLYMORPHIC -- also recorded in [186, 194]; the BTE label is for the cubic C1b phase, so the prediction holds only if that polymorph is the one synthesised | MARGINAL EXTRAPOLATION -- predicted 3.91 W/m/K falls above the 2.0-3.6 W/m/K span of the 5 measured Sb-Pd compounds by a factor of 1.09; that is within the 1.33x median disagreement between laboratories, so the boundary itself is not resolved at this precision"
+      },
+      {
+        "compound": "TmSbPd",
+        "family": "Sb-Pd",
+        "kappa_BTE_300": 7.66,
+        "kappa_pred_300": 3.91,
+        "lo50": 2.98,
+        "hi50": 5.12,
+        "lo90": 1.75,
+        "hi90": 8.76,
+        "n_bte_temps": 1,
+        "spacegroups": "[216]",
+        "note": "MARGINAL EXTRAPOLATION -- predicted 3.91 W/m/K falls above the 2.0-3.6 W/m/K span of the 5 measured Sb-Pd compounds by a factor of 1.09; that is within the 1.33x median disagreement between laboratories, so the boundary itself is not resolved at this precision"
+      },
+      {
+        "compound": "GdSbPt",
+        "family": "Sb-Pt",
+        "kappa_BTE_300": 3.34,
+        "kappa_pred_300": 1.7,
+        "lo50": 1.3,
+        "hi50": 2.23,
+        "lo90": 0.76,
+        "hi90": 3.81,
+        "n_bte_temps": 1,
+        "spacegroups": "[216]",
+        "note": "MARGINAL EXTRAPOLATION -- predicted 1.70 W/m/K falls below the 2.1-3.8 W/m/K span of the 4 measured Sb-Pt compounds by a factor of 1.24; that is within the 1.33x median disagreement between laboratories, so the boundary itself is not resolved at this precision"
+      },
+      {
+        "compound": "LaSbPt",
+        "family": "Sb-Pt",
+        "kappa_BTE_300": 1.72,
+        "kappa_pred_300": 0.88,
+        "lo50": 0.67,
+        "hi50": 1.15,
+        "lo90": 0.39,
+        "hi90": 1.97,
+        "n_bte_temps": 2,
+        "spacegroups": "[216]",
+        "note": "EXTRAPOLATION -- predicted 0.88 W/m/K falls below the 2.1-3.8 W/m/K span of the 4 measured Sb-Pt compounds by a factor of 2.39; the family has never been observed there"
+      },
+      {
+        "compound": "ScSbPt",
+        "family": "Sb-Pt",
+        "kappa_BTE_300": 12.29,
+        "kappa_pred_300": 6.27,
+        "lo50": 4.79,
+        "hi50": 8.21,
+        "lo90": 2.8,
+        "hi90": 14.04,
+        "n_bte_temps": 81,
+        "spacegroups": "[216]",
+        "note": "EXTRAPOLATION -- predicted 6.27 W/m/K falls above the 2.1-3.8 W/m/K span of the 4 measured Sb-Pt compounds by a factor of 1.65; the family has never been observed there"
+      }
+    ],
+    "REFUSED": [
+      {
+        "compound": "TiNiSb",
+        "family": "Ni-Sb",
+        "kappa_BTE_300": 3.64,
+        "kappa_pred_300": 1.86,
+        "lo50": 1.42,
+        "hi50": 2.44,
+        "lo90": 0.83,
+        "hi90": 4.17,
+        "n_bte_temps": 1,
+        "spacegroups": "[216]",
+        "note": "VEC 19 != 18 -- metallic, lattice kappa is not the whole story | MARGINAL EXTRAPOLATION -- predicted 1.86 W/m/K falls below the 2.3-14.5 W/m/K span of the 10 measured Ni-Sb compounds by a factor of 1.22; that is within the 1.33x median disagreement between laboratories, so the boundary itself is not resolved at this precision"
+      },
+      {
+        "compound": "CrSnPt",
+        "family": "Sn-Pt",
+        "kappa_BTE_300": 0.3,
+        "kappa_pred_300": 0.15,
+        "lo50": 0.11,
+        "hi50": 0.2,
+        "lo90": 0.07,
+        "hi90": 0.34,
+        "n_bte_temps": 1,
+        "spacegroups": "[]",
+        "note": "VEC 20 != 18 -- metallic, lattice kappa is not the whole story"
+      },
+      {
+        "compound": "ThSnPt",
+        "family": "Sn-Pt",
+        "kappa_BTE_300": 4.15,
+        "kappa_pred_300": 2.12,
+        "lo50": 1.62,
+        "hi50": 2.78,
+        "lo90": 0.95,
+        "hi90": 4.75,
+        "n_bte_temps": 81,
+        "spacegroups": "[216]",
+        "note": "radioactive/actinide (Th)"
+      },
+      {
+        "compound": "USnPt",
+        "family": "Sn-Pt",
+        "kappa_BTE_300": 5.41,
+        "kappa_pred_300": 2.76,
+        "lo50": 2.11,
+        "hi50": 3.62,
+        "lo90": 1.23,
+        "hi90": 6.18,
+        "n_bte_temps": 1,
+        "spacegroups": "[38, 216]",
+        "note": "radioactive/actinide (U)"
+      },
+      {
+        "compound": "ThNiSn",
+        "family": "Ni-Sn",
+        "kappa_BTE_300": 7.15,
+        "kappa_pred_300": 3.65,
+        "lo50": 2.79,
+        "hi50": 4.78,
+        "lo90": 1.63,
+        "hi90": 8.18,
+        "n_bte_temps": 1,
+        "spacegroups": "[216]",
+        "note": "radioactive/actinide (Th)"
+      },
+      {
+        "compound": "UNiSn",
+        "family": "Ni-Sn",
+        "kappa_BTE_300": 5.36,
+        "kappa_pred_300": 2.73,
+        "lo50": 2.08,
+        "hi50": 3.58,
+        "lo90": 1.22,
+        "hi90": 6.12,
+        "n_bte_temps": 1,
+        "spacegroups": "[216]",
+        "note": "radioactive/actinide (U) | MARGINAL EXTRAPOLATION -- predicted 2.73 W/m/K falls below the 3.0-7.4 W/m/K span of the 5 measured Ni-Sn compounds by a factor of 1.10; that is within the 1.33x median disagreement between laboratories, so the boundary itself is not resolved at this precision"
+      }
+    ],
+    "counts": {
+      "REFUSED": 6,
+      "FLAGGED": 5,
+      "ISSUED": 5
+    }
+  },
+  "novel_compounds": {
+    "issued": [
+      "GaCoMo"
+    ],
+    "refused": {
+      "AgBiPd": "no Ag-site half Heusler has a kappa label at any tier (18 structures known, 0 with kappa) - the chemistry is absent from the training pool entirely",
+      "HfGaCu": "no cubic Heusler (216/225) structure on record outside prototype-decoration databases; spacegroups seen: [194]",
+      "HfInCu": "no cubic Heusler (216/225) structure on record outside prototype-decoration databases; spacegroups seen: []",
+      "MnSbMo": "only 2 Mn-site compounds carry a tier-1 label, below the 3-compound floor where blind error jumps to ~60%",
+      "ZnCuGe": "no Zn-site half Heusler has a kappa label at any tier (64 structures known, 2 with kappa) - nothing to learn the chemistry from",
+      "ZnSbPd": "no Zn-site half Heusler has a kappa label at any tier (64 structures known, 2 with kappa) - nothing to learn the chemistry from",
+      "ZrGaCu": "no cubic Heusler (216/225) structure on record outside prototype-decoration databases; spacegroups seen: [194]"
+    }
+  },
+  "worked_examples": {
+    "_unavailable": "[Errno 2] No such file or directory: 'data/exports/kappa_v2/family_evidence/evidence_chain.csv'"
+  },
+  "_blocklist_check": "clean"
+}

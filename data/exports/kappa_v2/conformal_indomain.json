@@ -1,0 +1,45 @@
+{
+  "_generated_by": "compute_conformal_indomain.py",
+  "population": "the declared domain (VEC=18, cubic, non-polymorphic); 38 compounds, 18 chemistry clusters",
+  "construction": "absolute log10 residuals; half-width = ceil((m+1)*alpha) order statistic",
+  "levels": {
+    "0.50": {
+      "factor": 1.31,
+      "empirical_coverage_pct": 50.0,
+      "n_inside": 19,
+      "n_scored": 38,
+      "factor_range_across_folds": [
+        1.3,
+        1.33
+      ]
+    },
+    "0.80": {
+      "factor": 1.92,
+      "empirical_coverage_pct": 81.6,
+      "n_inside": 31,
+      "n_scored": 38,
+      "factor_range_across_folds": [
+        1.83,
+        1.92
+      ]
+    },
+    "0.90": {
+      "factor": 2.24,
+      "empirical_coverage_pct": 92.1,
+      "n_inside": 35,
+      "n_scored": 38,
+      "factor_range_across_folds": [
+        2.0,
+        2.24
+      ]
+    }
+  },
+  "superseded_bands": {
+    "values": {
+      "0.50": 1.32,
+      "0.80": 2.06,
+      "0.90": 3.21
+    },
+    "why": "taken from interval_validation.json's 'half, support>=3' set: 46 compounds including out-of-domain ones, with residuals from a calibration fitted on the pooled half and full Heusler blind set. Both differ from the predictor this paper reports."
+  }
+}

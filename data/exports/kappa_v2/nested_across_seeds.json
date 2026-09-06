@@ -1,0 +1,22 @@
+[
+  {
+    "mode": "threshold free (published protocol)",
+    "median": 41.61410409911288,
+    "within_2x": 76.19047619047619,
+    "uncorrected": 52.64610728166393,
+    "curse_pp": 10.341464037809558,
+    "seed_lo": 35.95050868594633,
+    "seed_hi": 43.13345447478577,
+    "n_seeds": 5
+  },
+  {
+    "mode": "threshold 0 (unconditional)",
+    "median": 42.99458287048052,
+    "within_2x": 72.0,
+    "uncorrected": 55.720789794108455,
+    "curse_pp": 7.684848223932683,
+    "seed_lo": 38.34976895995947,
+    "seed_hi": 46.15820365832289,
+    "n_seeds": 5
+  }
+]

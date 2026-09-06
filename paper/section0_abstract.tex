@@ -1,0 +1,45 @@
+% =============================================================================================
+% ABSTRACT + KEYWORDS.  Draft 2 -- reordered after review.
+%
+% Draft 1 opened with a deficiency in other people's models and reached our own contribution in
+% sentence three; the number that matters landed in sentence five of six. It also quoted our
+% 86.8% within-2x without the null's 78.9%, which on 38 compounds is a three-compound gap -- the
+% body states this plainly and the abstract did not, so the abstract was the least honest part of
+% the paper.
+%
+% Draft 2 leads with the resource, then the measured offset, then the correction, and quotes the
+% null beside our own figure. The rank correlation -- the statistically robust result -- is now
+% stated rather than buried.
+%
+% Draft 3 (2026-09-04): the closing sentence named only the issued five and the eleven declined,
+% so a reader of the abstract alone could not tell the ten conditional estimates existed -- and
+% the roadmap they carry ("two measurements in Ni-Bi release nine predictions") is one of the
+% paper's distinctive contributions. Now all three tiers are named.
+%
+% 222 words. No number here that is not also in the body and in paper_numbers.json.
+% =============================================================================================
+
+\begin{abstract}
+Lattice thermal conductivity governs thermoelectric performance, yet for half-Heusler compounds it
+has been measured for only about fifty materials while being calculated for hundreds. We assemble
+what is, to our knowledge, a near-exhaustive corpus of the measured values: \num{52} half Heuslers
+drawn from \num{164} publications, alongside \num{289} with full Boltzmann-transport calculations,
+in which every value carries an explicit provenance and method tier so that measurements and
+calculations are never pooled. The corpus shows that the two disagree systematically: published
+calculations exceed measured $\kappa_L$ by a median factor of \num{1.55}. Models trained and
+validated on calculated labels, which is standard in this field, therefore predict a quantity that
+differs from the experiment they are meant to guide. We fit a two-parameter transfer function
+mapping calculation onto measurement, and evaluate it with each compound's entire chemistry
+withheld from both the model and the calibration. Within a domain fixed in advance---semiconducting,
+cubic, non-polymorphic---it achieves \SI{33.7}{\percent} median error, averaged over five model seeds, against \SI{50.5}{\percent}
+for the same model output uncorrected and \SI{94.6}{\percent} for published semi-empirical estimates, and
+ranks compounds with Spearman $\rho=\num{0.65}$. It places \SI{86.8}{\percent}
+of compounds within a factor of two, against \SI{78.9}{\percent} for a compound-blind baseline.
+We issue five predictions, decline eleven with the criterion each fails, and report ten further
+estimates as conditional, naming the measurement that would qualify each.
+\end{abstract}
+
+\begin{keyword}
+half-Heusler \sep lattice thermal conductivity \sep thermoelectric materials \sep
+Boltzmann transport \sep experimental validation \sep materials data
+\end{keyword}

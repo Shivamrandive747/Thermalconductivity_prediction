@@ -1,0 +1,35 @@
+{
+  "title": "Calibrating first-principles lattice thermal conductivity to experiment: a curated half-Heusler dataset and a validated transfer function",
+  "description": "<p>A curated, provenance-tracked corpus of half-Heusler lattice thermal conductivity in which laboratory measurements and first-principles transport calculations are tiered separately and never pooled, together with a two-parameter transfer function mapping a published Boltzmann-transport calculation onto the experimental scale.</p><p>Published transport calculations exceed measured lattice thermal conductivity by a median factor of 1.55. Within a domain of applicability declared in advance, the correction places 86.8&nbsp;% of 38 held-out compounds within a factor of two of measurement, under leave-one-chemistry-out validation in which the compound's entire chemistry is withheld from the regression model and from the calibration alike.</p><p>The archive contains the curated corpus, the prediction list with its refusals, the five model seeds behind every seed-averaged figure, and the code that regenerates every figure and number in the paper. Code is MIT licensed; the curated data are CC BY 4.0. Upstream databases (Starrydata2, AFLOW, Materials Project, JARVIS, OQMD, COD) are fetched by the scripts rather than redistributed here &mdash; see LICENSE-DATA.</p>",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "language": "eng",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "Randive, Shivam",
+      "orcid": "0009-0005-1403-4484",
+      "affiliation": "Department of Physics, Sardar Vallabhbhai National Institute of Technology, Surat, India"
+    },
+    {
+      "name": "Randive, Ojaswini",
+      "affiliation": "Department of Metallurgical and Materials Engineering, National Institute of Technology Raipur, Raipur, Chhattisgarh, India"
+    },
+    {
+      "name": "Pandey, Himanshu",
+      "affiliation": "Department of Physics, Sardar Vallabhbhai National Institute of Technology, Surat, India"
+    }
+  ],
+  "keywords": [
+    "half-Heusler",
+    "lattice thermal conductivity",
+    "thermoelectric materials",
+    "Boltzmann transport equation",
+    "machine learning",
+    "materials informatics",
+    "experimental validation",
+    "transfer function"
+  ],
+  "notes": "Add each author's ORCID in the Zenodo web form before publishing the record; ORCIDs cannot be supplied reliably through this file and they permanently disambiguate the author list. After the DOI is issued, paste it into CITATION.cff and into the \\repourl macro in paper/manuscript.tex, then re-run check_tex_structure.py."
+}

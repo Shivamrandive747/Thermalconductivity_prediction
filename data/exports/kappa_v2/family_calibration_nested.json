@@ -1,0 +1,26 @@
+{
+  "leave-one-COMPOUND-out": {
+    "n": 51,
+    "n_family_available": 40,
+    "median_global": 35.75083503146927,
+    "median_family": 35.27974467856331,
+    "within2x_global": 78.43137254901961,
+    "within2x_family": 78.43137254901961,
+    "wilcoxon_p": 0.09112075750402696,
+    "family_better_n": 22
+  },
+  "leave-one-CHEMISTRY-out": {
+    "n": 51,
+    "n_family_available": 40,
+    "median_global": 33.70260591284679,
+    "median_family": 35.27974467856331,
+    "within2x_global": 74.50980392156863,
+    "within2x_family": 78.43137254901961,
+    "wilcoxon_p": 0.08837783808945388,
+    "family_better_n": 22
+  },
+  "global_cp": [
+    0.4999999999999999,
+    0.9500000000000002
+  ]
+}

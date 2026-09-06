@@ -1,0 +1,38 @@
+# Pinned to the versions that produced the published results.
+#
+# The previous version of this file listed only the harvesting dependencies and NONE of the
+# scientific stack -- no numpy, scipy, catboost, scikit-learn or matplotlib -- so
+# `pip install -r requirements.txt` followed by any analysis or figure script failed immediately
+# with ModuleNotFoundError. Rebuilt here from the actual import graph.
+#
+# Python 3.10 or newer (the code uses PEP 604 `X | None` annotations at runtime).
+
+# ---- reproduce the paper: analysis, model and figures ---------------------------------------
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.3.3
+scikit-learn==1.7.2
+catboost==1.2.10
+matplotlib==3.10.9
+pymatgen==2025.10.7          # Composition / formula parsing, used throughout
+openpyxl>=3.1                # reads the .xlsx validation set
+
+# SHAP values in Fig. 7(b) come from CatBoost natively (type="ShapValues"), so the `shap`
+# package is deliberately NOT a dependency.
+
+# ---- optional: the model-choice comparison of Section 2.6 -----------------------------------
+lightgbm==4.7.0              # only to rerun analysis/compare_headline_models.py
+
+# ---- optional: rebuild the corpus from the public APIs --------------------------------------
+# Not needed to reproduce the paper from the shipped curated data. See docs/REPRODUCE.md.
+requests>=2.31
+tqdm>=4.66
+python-dotenv>=1.0
+matminer>=0.9
+
+# ---- optional: re-run the LLM extraction described in Section 2.1 ---------------------------
+# Needs a Gemini API key and access to the source publications. Most readers will not run this.
+google-genai>=1.0
+pydantic>=2.6
+pymupdf>=1.24
+pymupdf4llm>=0.0.17

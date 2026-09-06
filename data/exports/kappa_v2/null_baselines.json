@@ -1,0 +1,57 @@
+{
+  "n_compounds": 51,
+  "n_clusters": 23,
+  "protocol": "leave-one-chemistry-cluster-out; the null's parameters and the model's calibration are both fitted on the training clusters only",
+  "predictors": {
+    "model + calibration": {
+      "median_ape": 33.7,
+      "within_2x_pct": 74.5,
+      "within_30_pct": 43.1
+    },
+    "null: constant kappa": {
+      "median_ape": 42.36,
+      "within_2x_pct": 66.7,
+      "within_30_pct": 31.4
+    },
+    "null: A*(T/300)^q": {
+      "median_ape": 42.06,
+      "within_2x_pct": 60.8,
+      "within_30_pct": 27.5
+    }
+  },
+  "paired_tests": {
+    "vs_power_law_null": {
+      "wilcoxon_p": 0.2981,
+      "model_better_pct": 58.8
+    },
+    "vs_constant_null": {
+      "wilcoxon_p": 0.7217,
+      "model_better_pct": 58.8
+    }
+  },
+  "rank_signal": {
+    "spearman": 0.379,
+    "p": 0.00616,
+    "n": 51,
+    "note": "does the model rank compounds better than chance?"
+  },
+  "temperature_slope": {
+    "n_assessable": 41,
+    "n_physical": 37,
+    "measured_slope_sd": 0.784,
+    "predicted_slope_sd": 0.228,
+    "measured_range": [
+      -4.78,
+      -0.02
+    ],
+    "predicted_range": [
+      -0.76,
+      0.43
+    ],
+    "spearman": -0.261,
+    "spearman_p": 0.1187,
+    "pearson": -0.231,
+    "pearson_p": 0.169,
+    "conclusion": "the model does NOT predict temperature dependence: all variation comes from the single fitted global exponent, not from the compound"
+  }
+}

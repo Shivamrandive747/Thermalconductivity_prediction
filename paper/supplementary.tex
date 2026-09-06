@@ -1,0 +1,201 @@
+% =============================================================================================
+% SUPPLEMENTARY MATERIAL.  Compiles standalone: pdflatex supplementary && bibtex supplementary
+% && pdflatex supplementary twice. Shares references.bib with the manuscript.
+%
+% The abstract of the main text promises "ten further estimates as conditional, naming the
+% measurement that would qualify each". Table S1 is that promise. It did not exist until now.
+%
+% Sections S2-S4 were moved out of the main text's Results. They are a genuine result -- the
+% argument that the barrier is now experimental rather than computational -- but a secondary one:
+% they appear in neither the abstract nor the Conclusions, and at ~700 words they were the single
+% largest block in the body not tied to the paper's central claim.
+%
+% Every number here is carried over unchanged from the verified set. Nothing was recomputed for
+% this document, and nothing was added to it.
+% =============================================================================================
+
+\documentclass[preprint, 12pt]{elsarticle}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[separate-uncertainty=true, detect-weight=true]{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\sisetup{group-separator = {,}, group-minimum-digits = 4}
+
+% Number everything S1, S2, ... so nothing collides with the main text.
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\journal{Computational Materials Science}
+
+\begin{document}
+
+\begin{frontmatter}
+\title{Supplementary material for\\
+       \emph{Calibrating first-principles lattice thermal conductivity to experiment:
+       a curated half-Heusler dataset and a validated transfer function}}
+\end{frontmatter}
+
+\section{Conditional predictions}
+\label{sec:conditional}
+
+Table~\ref{tab:conditional} lists the ten compounds that pass every structural and chemical screen
+of the main text but sit in a bonding family holding no usable measured anchor. They are not
+predictions. Each is the value the method \emph{would} issue if its family were validated, and the
+final column names the measurement that would validate it. They are tabulated so that a reader can
+see what the method is withholding and why, and so that the compounds are on record before the
+measurements are made rather than after.
+
+Nine of the ten are \ce{Ni}--\ce{Bi}, whose sole measured member is unusable for the reason set out
+in Section~\ref{sec:nibi}. The tenth, \ce{HfCoBi}, sits in \ce{Co}--\ce{Bi}, which has exactly one
+measured member and needs one more.
+
+One entry carries a further caveat. \ce{Sm} can be di- or trivalent, so the valence-electron count
+of \ce{SmNiBi} is not secure at 18 and its admission to the domain rests on an assumption the other
+nine do not require. We flag it rather than drop it, on the same grounds as the \ce{Yb} flag in the
+main text.
+
+\begin{table}[htb]
+  \centering
+  \caption{Conditional estimates at \SI{300}{\kelvin}: compounds the method would predict once
+  their bonding family carried two sound measurements. $\kappa^{\mathrm{BTE}}$ is the published
+  transport calculation; the estimate is that value multiplied by the transfer function. Intervals
+  are the conformal bands of the main text. $n_{\mathrm{src}}$ is the number of independent
+  calculations available and \emph{spread} their maximum ratio, so a spread above about \num{2}
+  would disqualify the row on the inter-calculation check of Section~\ref{sec:spread}.}
+  \label{tab:conditional}
+  \sisetup{table-format=2.2}
+  \begin{tabular}{llcccccc}
+    \toprule
+    Compound & Family & $\kappa^{\mathrm{BTE}}$ & Estimate & \SI{50}{\percent} &
+      \SI{90}{\percent} & $n_{\mathrm{src}}$ & spread \\
+    & & \multicolumn{4}{c}{(\si{\watt\per\meter\per\kelvin})} & & \\
+    \midrule
+    \ce{PrNiBi} & \ce{Ni}--\ce{Bi} &  4.47 & 2.28 & 1.74--2.99 & 1.02--5.11  & 3 & 1.36 \\
+    \ce{NdNiBi} & \ce{Ni}--\ce{Bi} &  5.25 & 2.68 & 2.04--3.51 & 1.20--6.00  & 2 & 1.00 \\
+    \ce{GdNiBi} & \ce{Ni}--\ce{Bi} &  8.12 & 4.14 & 3.16--5.42 & 1.85--9.28  & 2 & 1.00 \\
+    \ce{SmNiBi}$^{\dagger}$ & \ce{Ni}--\ce{Bi} &  8.49 & 4.33 & 3.31--5.67 & 1.93--9.70  & 1 & --- \\
+    \ce{TbNiBi} & \ce{Ni}--\ce{Bi} &  8.57 & 4.37 & 3.34--5.73 & 1.95--9.79  & 3 & 1.31 \\
+    \ce{TmNiBi} & \ce{Ni}--\ce{Bi} &  9.36 & 4.77 & 3.64--6.25 & 2.13--10.69 & 3 & 1.32 \\
+    \ce{ErNiBi} & \ce{Ni}--\ce{Bi} &  9.68 & 4.94 & 3.77--6.47 & 2.20--11.06 & 3 & 1.26 \\
+    \ce{LuNiBi} & \ce{Ni}--\ce{Bi} &  9.83 & 5.01 & 3.83--6.57 & 2.24--11.23 & 2 & 1.00 \\
+    \ce{DyNiBi} & \ce{Ni}--\ce{Bi} & 11.78 & 6.01 & 4.59--7.87 & 2.68--13.46 & 1 & --- \\
+    \midrule
+    \ce{HfCoBi} & \ce{Co}--\ce{Bi} & 18.60 & 9.49 & 7.24--12.43 & 4.23--21.25 & 1 & --- \\
+    \bottomrule
+    \multicolumn{8}{l}{\footnotesize $^{\dagger}$ \ce{Sm} may be di- or trivalent, so
+      $\mathrm{VEC}=18$ is an assumption here rather than a count.} \\
+    \multicolumn{8}{l}{\footnotesize The nine \ce{Ni}--\ce{Bi} rows are unlocked together by two
+      sound \ce{Ni}--\ce{Bi} measurements; \ce{HfCoBi} by one further \ce{Co}--\ce{Bi} measurement.}
+  \end{tabular}
+\end{table}
+
+\section{The fourteen candidates and the measurements that unlock them}
+\label{sec:fourteen}
+
+Five laboratory measurements would take the method from five predictions to nineteen. Three
+families are one measurement short: \ce{Co}--\ce{Bi}, \ce{Ni}--\ce{Pb} and \ce{Sb}--\ce{Ir} each
+have exactly one measured member, and in each case the prediction for that member was correct
+within a factor of two, so a second measured compound in any of them would qualify the family and
+release two predictions apiece---\ce{HfCoBi} and \ce{TiCoBi}, \ce{HfNiPb} and \ce{TiNiPb},
+\ce{HfSbIr} and \ce{TiSbIr}. \ce{Ni}--\ce{Bi} needs two and would release nine, which makes it by
+some margin the most economical of the four.
+
+We audited all seventeen resulting candidates against every screen that does not depend on the new
+measurement. Fourteen survive. \ce{YbNiBi} fails outright: it has no cubic record, no transport
+calculation, and an X site that appears nowhere in training. \ce{TiNiPb} and \ce{HoNiBi} fail the
+inter-calculation check of Section~\ref{sec:spread}. Of the fourteen survivors, the ten carrying a
+calculation at room temperature are tabulated above; \ce{TiCoBi}, \ce{HfNiPb}, \ce{HfSbIr} and
+\ce{TiSbIr} have a transport calculation but not one at \SI{300}{\kelvin}, so no comparable estimate
+can be quoted for them.
+
+The sixteen sound candidates sit on X sites well represented in training---\ce{Ti} with \num{28}
+compounds, \ce{Hf} with \num{17}, the rare earths with three to nine each---so the constraint on
+them is the missing measurement and nothing else.
+
+\section{Why \ce{Ni}--\ce{Bi} is blocked, and why reading further does not unblock it}
+\label{sec:nibi}
+
+\ce{Ni}--\ce{Bi} is blocked by an unusable reference rather than a missing one, and the distinction
+matters because it is not fixed by harvesting more literature.
+
+Its only measured member is \ce{YNiBi}, whose reported $\kappa_L$ \emph{rises} with temperature:
+$\mathrm{d}\ln\kappa_L/\mathrm{d}\ln T = +\num{0.51}$ over ten points. Lattice conduction cannot
+behave that way. The reason is recorded in the source itself, where the measuring authors report a
+significant bipolar contribution to the thermal conductivity of \ce{YNiBi}~\cite{li2015synthesis}.
+A single-parabolic-band Lorenz number carries no bipolar term, so above the bipolar onset the
+electronic part is under-subtracted and the remainder booked as lattice conductivity climbs with
+temperature. The defect is therefore in the electronic--lattice separation rather than in the
+specimen or in our transcription---but it is disqualifying either way, and we cannot credit the
+curve as validation even though our prediction for it happens to be accurate (\SI{21.7}{\percent}
+error, ratio \num{0.86}).
+
+Reading further does not close the gap. \ce{YNiBi} is the only rare-earth \ce{Ni}--\ce{Bi} half
+Heusler that has ever been synthesised and measured, and of the \num{50} works citing it not one
+reports a second measurement. \ce{LuNiBi}, the best studied of the candidates, has been probed by
+inelastic X-ray scattering together with first-principles calculations~\cite{li2024multiphono}, but
+no measured $\kappa_L$ for it exists in any source we harvested. The one \ce{Ni}--\ce{Bi} compound
+that does carry an independent $\kappa_L$ measurement is \ce{ZrNiBi}, and it is disqualified on
+grounds its own authors establish: stoichiometric \ce{ZrNiBi} has $\mathrm{VEC}=19$, lies above the
+convex hull, and can be made phase-pure only as the \ce{Zr}-deficient \ce{Zr0.88NiBi}, so it fails
+both the valence-count screen and the restriction to stoichiometric
+compounds~\cite{ren2023vacancymed,liu2025stabilizat}. That its exclusion is independently motivated
+by the synthesis literature is a check on the screen rather than a coincidence.
+
+\ce{Ni}--\ce{Bi} therefore stands at zero usable members and needs two: a re-measurement of
+\ce{YNiBi} below its bipolar onset together with one further \ce{Ni}--\ce{Bi} compound, or two new
+compounds.
+
+\section{Disagreement between independent calculations}
+\label{sec:spread}
+
+Auditing the candidates surfaced a check that was not being applied anywhere in the pipeline. Where
+a compound has been calculated by more than one group, the published values need not agree. Across
+the \num{151} half Heuslers carrying two or more independent transport calculations at
+\SI{300}{\kelvin}, the median disagreement is a factor of \num{1.13}, but the tail reaches
+\num{18.35}.
+
+Two candidates fail on it. \ce{TiNiPb} carries values of \num{19.5} and
+\SI{109}{\watt\per\meter\per\kelvin} from two sources, a factor of \num{5.6} apart, and
+\ce{HoNiBi} differs by \num{2.37}. Neither can be predicted until the discrepancy is resolved.
+Taking the first available row, as a naive pipeline would, gives a \ce{TiNiPb} prediction of
+\SI{55.6}{\watt\per\meter\per\kelvin}---nearly three times the highest value ever measured for any
+half Heusler.
+
+The same check bears on the five predictions the main text does issue. \ce{ErSbPt} and \ce{HoSbPt}
+rest on calculations that independent groups place \num{1.68} and \num{1.72} apart. The value we
+calibrate is mid-range in both cases, but the conformal interval describes the error of the transfer
+function and does not include the spread among the inputs to it, so for those two the stated
+\SI{90}{\percent} band should be read as a lower bound on the true uncertainty.
+
+\section{Which measurement is the most informative}
+\label{sec:informative}
+
+\ce{Ni}--\ce{Bi} is the most productive measurement the corpus points to. A different one is the
+most informative, for a reason independent of how many predictions it releases.
+
+\ce{Bi}--\ce{Pd} is the single family this method demonstrably fails on, under-predicting its
+in-domain members by a median factor of \num{2.5}. That failure is not attributable to palladium:
+\ce{Sb}--\ce{Pd} shares the \ce{Pd} site and is predicted about as well as the corpus as a
+whole---\SI{29.6}{\percent} median error over its four in-domain measured members, against
+\SI{33.7}{\percent} for the full blind test. Whether the \ce{Bi}--\ce{Pd} failure is a property of
+bismuth on a noble-metal site, or of that particular pairing, is therefore open, and a single
+\ce{Bi}--\ce{Pt} measurement would settle it.
+
+Beyond the four families named above the economics deteriorate sharply. Of the \num{52} bonding
+families never measured at all, value is concentrated in only three---\ce{Bi}--\ce{Pt},
+\ce{Sn}--\ce{Au} and \ce{Pb}--\ce{Au}---each of which would need two measurements from scratch to
+qualify. The other \num{46} hold one or two candidates apiece, so two measurements there would buy a
+single prediction, and we do not propose them.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}

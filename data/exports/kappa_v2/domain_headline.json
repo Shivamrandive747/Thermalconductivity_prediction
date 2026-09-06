@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "scope": "all half Heuslers (no screen)",
+      "n": 51,
+      "c": 0.5,
+      "p": 0.95,
+      "median_ape": 35.8,
+      "within_2x": 78.4,
+      "uncorrected": 54.3
+    },
+    {
+      "scope": "VEC = 18",
+      "n": 43,
+      "c": 0.57,
+      "p": 0.85,
+      "median_ape": 31.0,
+      "within_2x": 83.7,
+      "uncorrected": 48.6
+    },
+    {
+      "scope": "VEC = 18 + cubic, non-polymorphic",
+      "n": 38,
+      "c": 0.51,
+      "p": 0.8,
+      "median_ape": 29.7,
+      "within_2x": 86.8,
+      "uncorrected": 49.0
+    },
+    {
+      "scope": "EXCLUDED by the screens",
+      "n": 13,
+      "c": 0.19,
+      "p": 0.75,
+      "median_ape": 39.5,
+      "within_2x": 53.8,
+      "uncorrected": 134.8
+    }
+  ],
+  "excluded": [
+    "BaAgSb",
+    "CuAgTe",
+    "LaSbPd",
+    "LiAlGe",
+    "LiAlSi",
+    "LiZnSb",
+    "MgAgSb",
+    "MgNiSb",
+    "NbCoSb",
+    "VCoSb",
+    "VFeSb",
+    "VNiSn",
+    "ZnNiSn"
+  ],
+  "note": "screens are pre-existing in make_paper_predictions.py; applying them to validation removes an inconsistency, it does not introduce a filter"
+}

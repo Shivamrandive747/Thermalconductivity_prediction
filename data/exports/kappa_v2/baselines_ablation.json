@@ -1,0 +1,38 @@
+{
+  "_generated_by": "compute_baselines_ablation.py",
+  "protocol": "leave-one-chemistry-out, in domain, per-compound median error",
+  "two_parameter": {
+    "label": "kappa_BTE * min(c (T/300)^p, 1)",
+    "n": 38,
+    "median_ape": 31.0,
+    "within_2x_pct": 86.8,
+    "bias": 1.0
+  },
+  "one_parameter": {
+    "label": "kappa_BTE * c   (no temperature term)",
+    "n": 38,
+    "median_ape": 45.1,
+    "within_2x_pct": 71.1,
+    "bias": 1.03
+  },
+  "exponent_earns_its_keep": {
+    "delta_pp": 14.1,
+    "wilcoxon_p": 0.001,
+    "two_param_better_pct": 71.1
+  },
+  "published_semi_empirical": {
+    "label": "Slack / Debye-Callaway (published method)",
+    "n": 21,
+    "median_ape": 94.6,
+    "within_2x_pct": 52.4,
+    "bias": 1.95,
+    "note": "scored on the in-domain compounds that carry such an estimate; it is not a fitted model so no holdout applies, which if anything favours it"
+  },
+  "vs_published": {
+    "n_common": 21,
+    "ours": 31.5,
+    "theirs": 94.6,
+    "wilcoxon_p": 0.0002,
+    "ours_better_pct": 81.0
+  }
+}

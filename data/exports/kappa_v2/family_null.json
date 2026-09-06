@@ -1,0 +1,92 @@
+{
+  "_generated_by": "compute_family_null.py",
+  "model": {
+    "n": 38,
+    "median_ape": 31.0,
+    "within_2x": 86.8
+  },
+  "family_null": {
+    "n": 31,
+    "median_ape": 28.2,
+    "within_2x": 87.1
+  },
+  "head_to_head": {
+    "n": 31,
+    "model": 33.3,
+    "family": 28.2,
+    "wilcoxon_p": 0.224,
+    "model_better_pct": 41.9
+  },
+  "family_null_cannot_cover": [
+    "AlVNi",
+    "NbFeSb",
+    "TaFeSb",
+    "YNiBi",
+    "ZrCoBi",
+    "ZrNiPb",
+    "ZrSbIr"
+  ],
+  "issued_covered_by_family_null": [],
+  "within_family": [
+    {
+      "fam": "Bi-Pd",
+      "n": 3,
+      "rho_model": 0.5,
+      "rho_family": -1.0,
+      "family_spread": 1.38
+    },
+    {
+      "fam": "Co-Sb",
+      "n": 3,
+      "rho_model": -0.5,
+      "rho_family": -1.0,
+      "family_spread": 1.12
+    },
+    {
+      "fam": "Co-Sn",
+      "n": 3,
+      "rho_model": 0.5,
+      "rho_family": 0.5,
+      "family_spread": 1.78
+    },
+    {
+      "fam": "Ni-Sb",
+      "n": 8,
+      "rho_model": 0.929,
+      "rho_family": -0.667,
+      "family_spread": 1.36
+    },
+    {
+      "fam": "Ni-Sn",
+      "n": 3,
+      "rho_model": 0.5,
+      "rho_family": -1.0,
+      "family_spread": 1.16
+    },
+    {
+      "fam": "Sb-Pd",
+      "n": 4,
+      "rho_model": -0.2,
+      "rho_family": -0.8,
+      "family_spread": 1.24
+    },
+    {
+      "fam": "Sb-Pt",
+      "n": 4,
+      "rho_model": 0.6,
+      "rho_family": -1.0,
+      "family_spread": 1.45
+    },
+    {
+      "fam": "Sn-Pt",
+      "n": 3,
+      "rho_model": 0.5,
+      "rho_family": -0.5,
+      "family_spread": 1.22
+    }
+  ],
+  "within_family_median_rho": {
+    "model": 0.5,
+    "family_null": -0.9
+  }
+}
