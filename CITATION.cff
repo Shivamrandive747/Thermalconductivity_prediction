@@ -24,16 +24,17 @@ authors:
     affiliation: >-
       Department of Physics, Sardar Vallabhbhai National Institute of Technology,
       Surat, India
-  - given-names: Ojaswini
-    family-names: Randive
-    affiliation: >-
-      Department of Metallurgical and Materials Engineering, National Institute of Technology Raipur, Raipur, Chhattisgarh, India
   - given-names: Heet
     family-names: Lungaria
     orcid: "https://orcid.org/0009-0007-5249-6764"
     affiliation: >-
       Department of Physics, Sardar Vallabhbhai National Institute of Technology,
       Surat, India
+  - given-names: Ojaswini
+    family-names: Randive
+    orcid: "https://orcid.org/0009-0003-3210-8120"
+    affiliation: >-
+      Department of Metallurgical and Materials Engineering, National Institute of Technology Raipur, Raipur, Chhattisgarh, India
   - given-names: Himanshu
     family-names: Pandey
     orcid: "https://orcid.org/0000-0002-7380-366X"
