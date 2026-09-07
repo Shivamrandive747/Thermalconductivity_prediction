@@ -138,7 +138,7 @@ single global exponent; the magnitude is corrected, the shape is not.
 A prediction of $\kappa_L$ earns nothing unless it beats predictors that use no compound-specific
 information. Against the two compound-blind nulls of Section~\ref{sec:nulls}, both refitted with
 the same chemistry held out as the calibration, the calibrated prediction is better on every metric
-in Table~\ref{tab:blind} and closer to the measurement for \SI{71}{\percent} of compounds. A paired
+in Table~\ref{tab:blind} and closer to the measurement for \SI{65.8}{\percent} of compounds. A paired
 Wilcoxon signed-rank test over per-compound errors gives $p=\num{0.050}$ against the constant null
 and $p=\num{0.048}$ against the power law, taking the median over seeds; three of the five seeds
 clear both nulls at \num{0.05} and two do not. Two qualifications belong with those figures. Both
@@ -175,10 +175,11 @@ a power law to the \emph{measured} $\kappa(T)$ of the held-out compound's own
 $(\mathrm{Y},\mathrm{Z})$ bonding family and use that. It needs no first-principles calculation, no
 regression model and no calibration. It is a strong baseline, and we report it as such: fitted
 leave-one-chemistry-out like everything else, it achieves \SI{28.2}{\percent} median error on the
-\num{31} in-domain compounds whose family has at least two other measured members, against
-\SI{31.0}{\percent} for our method at the same seed. Head to head on those \num{31} the difference
-is not significant (paired Wilcoxon $p=\num{0.22}$) and our method is the closer of the two for only
-\SI{42}{\percent} of them. \textbf{On absolute accuracy we do not beat it.}
+\num{31} in-domain compounds whose family has at least two other measured members. Scored on those
+same \num{31} compounds our method gives \SI{33.3}{\percent}---the \SI{31.0}{\percent} quoted
+elsewhere is over all \num{38}, and comparing the two populations would understate the gap. Head to
+head the difference is not significant (paired Wilcoxon $p=\num{0.22}$) and our method is the closer
+of the two for only \SI{42}{\percent} of them. \textbf{On absolute accuracy we do not beat it.}
 
 Two things nonetheless separate the two, and both bear on how the predictions below should be read.
 The first is coverage: the family baseline is undefined for \num{7} of the \num{38} in-domain
@@ -209,6 +210,11 @@ own. On the \num{34} in-domain compounds carrying a temperature-matched publishe
 the uncorrected published calculation gives \SI{71.6}{\percent} median error at a bias of \num{1.72}
 and the uncorrected surrogate \SI{66.1}{\percent} at \num{1.66}; calibrated, the surrogate gives
 \SI{31.4}{\percent} at \num{1.05} and the published calculation \SI{27.3}{\percent} at \num{1.09}.
+The bias of \num{1.72} here and the factor of \num{1.55} quoted in Section~\ref{sec:offset} are the
+same offset aggregated two ways: \num{1.55} is the median over the \num{95} compound--temperature
+bins of Fig.~\ref{fig:offset}, \num{1.72} the median over the \num{34} compounds. We quote the
+binned figure when describing the offset because it is what the figure shows, and the per-compound
+figure whenever a compound-level error is being scored.
 Two things follow. The uncorrected published calculation is \emph{worse} than the uncorrected
 surrogate, so the improvement the transfer function delivers over a raw first-principles value is
 larger than Table~\ref{tab:blind} implies, not smaller. And the route we deploy is the better of the
@@ -229,10 +235,14 @@ effects together with the comparison against the nulls. Grouping in-domain compo
 $(\mathrm{Y},\mathrm{Z})$ site pair---the two more electronegative sites, which form the covalent
 sublattice that carries the heat---separates the accurate families from the inaccurate:
 \ce{Co}--\ce{Sb} (\SI{21.3}{\percent}), \ce{Sb}--\ce{Pt} (\SI{23.2}{\percent}) and
-\ce{Ni}--\ce{Sb} (\SI{29.2}{\percent}) are predicted well, while \ce{Bi}--\ce{Pd} is not, at
-\SI{60.0}{\percent} with only \SI{33}{\percent} of members within a factor of two and a median bias
-of \num{0.40}---a systematic \num{2.5}-fold under-prediction. We issue no predictions in
-\ce{Bi}--\ce{Pd} for that reason. This grouping is a \emph{post hoc} description of where errors
+\ce{Ni}--\ce{Sb} (\SI{29.2}{\percent}) are predicted well, while \ce{Co}--\ce{Sn}
+(\SI{80.8}{\percent}) and \ce{Bi}--\ce{Pd} (\SI{60.0}{\percent}) are not. The two fail differently,
+and the difference decides what we do about them. Every \ce{Co}--\ce{Sn} member still lands within a
+factor of two, so its predictions stay inside the band this method claims. \ce{Bi}--\ce{Pd} does
+not: only \SI{33}{\percent} of its members are within a factor of two, and its median bias of
+\num{0.40} is a systematic \num{2.5}-fold under-prediction rather than scatter. We issue no
+predictions in either family. Both rest on three compounds, so these figures indicate where to be
+careful rather than measure a failure rate. This grouping is a \emph{post hoc} description of where errors
 concentrate: the holdout unit throughout is the X site, not the $(\mathrm{Y},\mathrm{Z})$ pair, so
 family members remain in training when a compound is held out and the family error is an
 interpolation figure rather than an extrapolation test.
@@ -498,7 +508,7 @@ while our fitted $p=\num{0.80}$ exceeds that ceiling by a factor of \num{1.63}: 
 violates the bound cannot be the boundary term it resembles. The transfer function therefore
 absorbs point-defect scattering, site disorder, porosity and interface resistance together with any
 boundary contribution. Taken literally its parameters imply a phonon boundary length of order
-\SIrange{50}{60}{\nano\meter}; we report that as a description of the fit, not as a microstructural
+\SI{44}{\nano\meter}; we report that as a description of the fit, not as a microstructural
 measurement, and we make no claim about the grain sizes of the reference specimens.
 
 \textbf{Twelve compounds require the conductivity to be scaled up.} The correction is capped at

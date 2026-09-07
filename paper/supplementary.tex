@@ -181,8 +181,12 @@ function and does not include the spread among the inputs to it, so for those tw
 \ce{Ni}--\ce{Bi} is the most productive measurement the corpus points to. A different one is the
 most informative, for a reason independent of how many predictions it releases.
 
-\ce{Bi}--\ce{Pd} is the single family this method demonstrably fails on, under-predicting its
-in-domain members by a median factor of \num{2.5}. That failure is not attributable to palladium:
+\ce{Bi}--\ce{Pd} is the family this method fails on in the way that matters. \ce{Co}--\ce{Sn}
+carries the larger median error (\SI{80.8}{\percent} against \SI{60.0}{\percent}), but all three of
+its members still fall within a factor of two of measurement, so its predictions remain usable.
+\ce{Bi}--\ce{Pd} does not: only \SI{33}{\percent} of its members are within a factor of two, and it
+under-predicts by a median factor of \num{2.5}. A one-sided miss of that size is the failure worth
+diagnosing, which is why a \ce{Bi}--\ce{Pt} measurement is the informative one. That failure is not attributable to palladium:
 \ce{Sb}--\ce{Pd} shares the \ce{Pd} site and is predicted about as well as the corpus as a
 whole---\SI{29.6}{\percent} median error over its four in-domain measured members, against
 \SI{33.7}{\percent} for the full blind test. Whether the \ce{Bi}--\ce{Pd} failure is a property of
