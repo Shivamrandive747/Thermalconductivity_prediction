@@ -47,12 +47,20 @@
 %      attached to Shivam Randive as corresponding author. Confirm the address belongs to him.
 %   2. Ojaswini Randive's affiliation is unknown here and must not be guessed.
 \newcommand{\pandeyemail}{hp@phy.svnit.ac.in}
-% Heet Lungaria's CRediT roles. Left blocking on purpose: "other stuff" is not a contribution
-% statement, and inventing one would misdescribe what a named author did. Replace with the roles
-% he confirms, drawn from the standard fourteen-term taxonomy -- e.g.
-%   Data curation, Investigation, Writing -- review \& editing.
-\newcommand{\heetroles}{HEET LUNGARIA CREDIT ROLES --- TO BE ADDED}
-\newcommand{\repourl}{\texttt{[REPOSITORY URL AND DOI --- TO BE ADDED]}}
+% Heet Lungaria's CRediT roles, set to match Ojaswini Randive's on the first author's instruction:
+% both contributed to the figures. If the phonon-stability analysis is later added to the paper,
+% this line should be revised to name that contribution -- but only once the analysis is actually
+% IN the manuscript, since CRediT describes contributions to this work.
+\newcommand{\heetroles}{Visualization, Writing -- review \& editing.}
+% Zenodo archive of the GitHub repository, minted from release v1.0.0.
+% Zenodo issues TWO DOIs: a version DOI pinned to this exact snapshot, and a concept DOI that
+% always resolves to the newest version. The version DOI is used here so a referee gets precisely
+% the code that produced these numbers. Confirm on the Zenodo record page that 22642666 is the one
+% labelled "Version DOI"; if the labels are the other way round, swap the two numbers below.
+\newcommand{\repourl}{\href{https://doi.org/10.5281/zenodo.22642666}%
+  {\texttt{doi:10.5281/zenodo.22642666}} (concept DOI
+  \href{https://doi.org/10.5281/zenodo.22642665}{\texttt{10.5281/zenodo.22642665}}, which resolves
+  to the latest version)}
 % Draft. Confirm the Google credit programme's exact name before submission -- funders and credit
 % schemes usually specify the wording they want to be acknowledged by, and getting it wrong is
 % worse than omitting it. Add any departmental or institutional support Prof. Pandey advises.
