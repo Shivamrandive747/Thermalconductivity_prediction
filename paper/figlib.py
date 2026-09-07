@@ -122,7 +122,10 @@ def save(fig, name: str, also_png: bool = True) -> Path:
     """Write the PDF the journal wants, plus a PNG so the figure can actually be inspected."""
     OUTDIR.mkdir(parents=True, exist_ok=True)
     pdf = OUTDIR / f"{name}.pdf"
-    fig.savefig(pdf)
+    # dpi applies ONLY to artists marked rasterized=True; everything else stays vector. 600 is the
+    # usual journal floor for a raster panel, and without it a rasterized layer would fall back to
+    # the ~100 dpi screen default and look soft in print.
+    fig.savefig(pdf, dpi=600)
     if also_png:
         fig.savefig(OUTDIR / f"{name}.png", dpi=300)
     plt.close(fig)

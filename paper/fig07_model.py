@@ -136,7 +136,13 @@ def main() -> int:
         lo, hi = np.nanpercentile(v, [2, 98])
         cnorm = np.clip((v - lo) / (hi - lo + 1e-12), 0, 1)
         jit = rng.normal(0, 0.115, size=len(s))
-        sc = ax.scatter(s, row + jit, c=cnorm, cmap=cmap, s=2.4, lw=0, alpha=0.55, zorder=3)
+        # rasterized=True is what keeps this figure compilable. The beeswarm draws one point per
+        # row per descriptor -- ~81,000 vector path operations, forty times the next heaviest
+        # figure -- which times out a LaTeX compile on Overleaf's free plan. Rasterizing turns the
+        # point cloud into a bitmap at the savefig dpi while axes, ticks and labels stay vector,
+        # so the figure still scales cleanly in print. Standard practice for dense scatter plots.
+        sc = ax.scatter(s, row + jit, c=cnorm, cmap=cmap, s=2.4, lw=0, alpha=0.55, zorder=3,
+                        rasterized=True)
     ax.axvline(0, color="#9A9A9A", lw=0.6, zorder=2)
     ax.set_yticks(range(len(top)))
     ax.set_yticklabels([NICE.get(X.columns[j], X.columns[j]) for j in top[::-1]], fontsize=7)

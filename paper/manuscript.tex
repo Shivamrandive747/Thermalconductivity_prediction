@@ -33,6 +33,19 @@
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 
+% elsarticle's \corref and \cnotenum end up inside the string hyperref builds for the PDF's
+% metadata, which it cannot typeset -- that is the "Token not allowed in a PDF string" warning
+% repeated for every author. Supplying the metadata explicitly silences it and, more usefully,
+% puts a correct title and author list into the PDF's document properties, which is what indexers
+% and reference managers read.
+\hypersetup{
+  pdftitle  = {Calibrating first-principles lattice thermal conductivity to experiment:
+               a curated half-Heusler dataset and a validated transfer function},
+  pdfauthor = {Shivam Randive, Heet Lungaria, Ojaswini Randive, Himanshu Pandey},
+  pdfsubject= {Lattice thermal conductivity of half-Heusler thermoelectrics},
+  pdfkeywords = {half-Heusler, lattice thermal conductivity, thermoelectric materials,
+                 Boltzmann transport, machine learning, materials data}}
+
 % Half Heuslers are written as \ce{ZrNiSn}; keep chemistry upright inside bold table cells.
 \sisetup{group-separator = {,}, group-minimum-digits = 4}
 
