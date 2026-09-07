@@ -60,7 +60,15 @@ calibration refitted for each held-out chemistry; across those refits $c$ varies
 \subsection{Blind-test accuracy}
 \label{sec:blind}
 
-Table~\ref{tab:blind} gives the central result. Across \num{38} half Heuslers spanning \num{18}
+Table~\ref{tab:blind} gives the central result. One thing about it should be said before the
+numbers rather than after: the predictor being corrected here is the regression model of
+Section~\ref{sec:model}, because that is the only one evaluable for all \num{38} compounds. The
+route actually deployed for the predictions of Section~\ref{sec:issued} calibrates the
+\emph{published} transport calculation instead, and it is more accurate---\SI{27.3}{\percent}
+against \SI{31.4}{\percent}, scored separately in Section~\ref{sec:deployed}. Table~\ref{tab:blind}
+is therefore the conservative of the two routes.
+
+Across \num{38} half Heuslers spanning \num{18}
 chemistry clusters, each predicted with its entire chemistry removed from training, the calibrated
 prediction achieves a median absolute error of \SI{33.7}{\percent}---the median over five model
 seeds, which individually range from \SI{31.0}{\percent} to \SI{40.0}{\percent}---and places
@@ -434,7 +442,9 @@ predict them the moment their family acquired two sound measurements, and they a
 the measurement each waits on in Table~S1 of the supplementary material. Their existence makes the
 binding constraint concrete: five laboratory measurements across four bonding families would take
 the method from five predictions to nineteen, of which fourteen survive every screen that does not
-depend on the new measurement. \ce{Ni}--\ce{Bi} is the most economical, releasing nine predictions
+depend on the new measurement. The ten conditional estimates of Table~S1 are the subset of those
+fourteen that carry a calculation at room temperature and can therefore be quoted with a value; the
+other four have a transport calculation but not one at \SI{300}{\kelvin}. \ce{Ni}--\ce{Bi} is the most economical, releasing nine predictions
 for two measurements, and it is blocked in an instructive way---not by a missing measurement but by
 an unusable one. Its sole measured member, \ce{YNiBi}, has a reported $\kappa_L$ that \emph{rises}
 with temperature, which lattice conduction cannot do; the measuring authors themselves report the
@@ -501,8 +511,8 @@ temperature~\cite{li2015synthesis}, or resonant rattling modes~\cite{jana2016the
 distinguished from ordinary ones by anything in our model.
 
 \textbf{The correction is empirical, not a measurement of microstructure.} Its temperature
-dependence is consistent with boundary-limited transport in the Callaway
-sense~\cite{callaway1959model}, and we describe it that way, but the Cauchy--Schwarz argument of
+dependence resembles boundary-limited transport in the Callaway sense~\cite{callaway1959model},
+which is why the form was chosen, but the Cauchy--Schwarz argument of
 Section~\ref{sec:transfer} caps the log-slope of any single-boundary-length model at $1-c=\num{0.49}$
 while our fitted $p=\num{0.80}$ exceeds that ceiling by a factor of \num{1.63}: a quantity that
 violates the bound cannot be the boundary term it resembles. The transfer function therefore
