@@ -39,8 +39,8 @@ Figure~\ref{fig:offset} shows the offset and its removal. Applying Eq.~\eqref{eq
 $c=\num{0.51}$ and $p=\num{0.80}$ fitted over the whole domain---the constants a user of the method
 would apply---brings the median ratio from \num{1.55} to \num{1.03}, and raises the fraction of
 compound--temperature points within a factor of two of measurement from \SI{72}{\percent} to
-\SI{87}{\percent}. The correction therefore centres the population rather than merely shrinking it
-towards the data. The accuracy figures below are scored under a stricter arrangement, with the
+\SI{87}{\percent}. The correction therefore centres the population, not merely shrinks it towards
+the data. The accuracy figures below are scored under a stricter arrangement, with the
 calibration refitted for each held-out chemistry; across those refits $c$ varies only between
 \num{0.48} and \num{0.51}.
 
@@ -51,7 +51,7 @@ calibration refitted for each held-out chemistry; across those refits $c$ varies
   factor of \num{1.55}; the transfer function removes the offset.}
   (a) Calculated against measured $\kappa_L$ for \num{34} in-domain half Heuslers,
   \num{95} compound--temperature points. (b) The same points after Eq.~\eqref{eq:transfer}.
-  Shading marks a factor of two. Points are per compound per \SI{100}{\kelvin} bin rather than per
+  Shading marks a factor of two. Points are per compound per \SI{100}{\kelvin} bin, not per
   measurement row, since a few heavily sampled compounds (\ce{TiNiSn} \num{753} rows,
   \ce{ZrNiSn} \num{646}) would otherwise dominate.}
   \label{fig:offset}
@@ -73,9 +73,9 @@ chemistry clusters, each predicted with its entire chemistry removed from traini
 prediction achieves a median absolute error of \SI{33.7}{\percent}---the median over five model
 seeds, which individually range from \SI{31.0}{\percent} to \SI{40.0}{\percent}---and places
 \SI{86.8}{\percent} of compounds within a factor of two of the measurement. The same model output
-without the correction gives \SI{50.5}{\percent} and \SI{65.8}{\percent}. The bias deserves
-separate mention: the median ratio of predicted to measured conductivity is \num{1.00}, against
-\num{1.32} uncorrected, so the method is centred and not merely closer. Under the tighter criterion
+without the correction gives \SI{50.5}{\percent} and \SI{65.8}{\percent}. The median ratio of
+predicted to measured conductivity is \num{1.00}, against \num{1.32} uncorrected, so the method is
+centred and not merely closer. Under the tighter criterion
 of \SI{30}{\percent}, the fraction rises from \SI{21.1}{\percent} to \SI{42.1}{\percent}, so two
 compounds in five are predicted to within a third.
 
@@ -155,8 +155,10 @@ two comparisons, so we present them as evidence rather than proof. And the same 
 all \num{51} half Heuslers, before the domain screens are applied, gives $p=\num{0.30}$ and
 $p=\num{0.72}$: the separation appears only once the domain is imposed. We regard that as the
 expected consequence of removing thirteen compounds in which lattice conduction is not the dominant
-channel, and note that the screens were fixed before the validation set was scored; a reader who
-weighs it differently has both numbers. The rank correlation is the more robust claim---Spearman's
+channel, and note that the screens were fixed before the validation set was scored. Both numbers
+are given.
+
+The rank correlation is the more robust claim---Spearman's
 $\rho$ between predicted and measured conductivity is \num{0.65} across the \num{38} compounds
 (seed range \numrange{0.618}{0.675}, $p<\num{1e-4}$ for every seed)---and ordering candidates
 reliably is what a screening application requires.
@@ -183,9 +185,10 @@ a power law to the \emph{measured} $\kappa(T)$ of the held-out compound's own
 $(\mathrm{Y},\mathrm{Z})$ bonding family and use that. It needs no first-principles calculation, no
 regression model and no calibration. It is a strong baseline, and we report it as such: fitted
 leave-one-chemistry-out like everything else, it achieves \SI{28.2}{\percent} median error on the
-\num{31} in-domain compounds whose family has at least two other measured members. Scored on those
-same \num{31} compounds our method gives \SI{33.3}{\percent}---the \SI{31.0}{\percent} quoted
-elsewhere is over all \num{38}, and comparing the two populations would understate the gap. Head to
+\num{31} in-domain compounds whose family has at least two other measured members
+(Table~\ref{tab:populations}). Scored on those same \num{31} our method gives \SI{33.3}{\percent};
+the \SI{31.0}{\percent} quoted elsewhere is over all \num{38}, and comparing the two would
+understate the gap. Head to
 head the difference is not significant (paired Wilcoxon $p=\num{0.22}$) and our method is the closer
 of the two for only \SI{42}{\percent} of them. \textbf{On absolute accuracy we do not beat it.}
 
@@ -309,7 +312,8 @@ measurement exists, counting the usable anchors in each compound's family \emph{
 compound itself}, which is the situation an unmeasured target actually faces. Compounds whose family
 then holds two or more anchors have a median error of \SI{32.3}{\percent} with \SI{96.2}{\percent}
 inside a factor of two ($n=\num{26}$); those whose family holds none reach \SI{37.2}{\percent} with
-\SI{75}{\percent} inside ($n=\num{8}$). The separation is carried by the within-$2\times$ rate
+\SI{75}{\percent} inside ($n=\num{8}$). The remaining \num{2} hold exactly one anchor and are the
+subject of the relaxation test below. The separation is carried by the within-$2\times$ rate
 rather than by the median, and we state it no more strongly than that. Relaxing the threshold from
 two anchors to one fails: the two compounds the weaker rule admits have a median error of
 \SI{45.5}{\percent} against \SI{32.3}{\percent}. The intuitive alternative---requiring many

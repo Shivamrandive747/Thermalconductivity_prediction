@@ -64,16 +64,16 @@ recovery of measurements that existed in our own extraction records but had neve
 training table. The two Starrydata citations are the resource and the dated version actually used,
 so the corpus can be regenerated exactly. Starrydata supplies \SI{95}{\percent} of the experimental
 rows, and those rows trace to \num{150} distinct primary publications, since it aggregates
-digitised transport curves rather than reporting measurements of its own. Seven compounds
+digitised transport curves and does not measure anything itself. Seven compounds
 (\ce{AlNiSb}, \ce{AlVNi}, \ce{DySbPt}, \ce{LuSbPt}, \ce{TbSbPt}, \ce{VNiSn}, \ce{ZrSbIr}) enter
 only through direct extraction, and three of them---the \ce{Sb}--\ce{Pt} series members---validate
 a bonding family in which we later issue predictions.
 
 Direct extraction from primary publications was performed by a multimodal large language model
-(Google Gemini) reading the full text, tables and figures, rather than by hand. The method is
+(Google Gemini) reading the full text, tables and figures. The method is
 productive but not trustworthy on its own, and one failure mode is worth recording because it is
 invisible without an explicit check. A publisher's full-text endpoint may return a metadata stub
-carrying only a title and a link, with HTTP success rather than an error; \num{167} such stubs were
+carrying only a title and a link, and return it with an HTTP success code; \num{167} such stubs were
 stored as though they were articles. Given a title alone the model does not decline. It returns
 fluent and specific measurements---instrument models, sample densities, figure numbers, whole
 temperature series---that are entirely fabricated. Extraction of \num{45} of those stubs produced
@@ -83,7 +83,7 @@ Extraction is now gated on the retrieved source exceeding \num{3000} bytes, an o
 below the smallest genuine article body and above the largest observed stub, so a title-only record
 is never sent to the model; and affected rows are flagged in place and excluded downstream rather
 than deleted, so the contamination remains auditable. Every surviving value must additionally pass
-the physical and provenance gates below, which are enforced in code rather than by inspection. No
+the physical and provenance gates below, which are enforced in code. No
 value enters the corpus on the model's authority alone.
 
 First-principles values were drawn from
@@ -149,7 +149,7 @@ third-order force constants. Tier~2 is transport computed on a machine-learned i
 potential rather than \emph{ab initio} forces, \num{419} compounds. Tier~3 is a semi-empirical
 Slack or Debye--Callaway estimate from elastic and thermodynamic quantities, \num{245} compounds.
 
-Tier~1 requires care, because the repository flag and the method string disagree. \num{505} half
+For tier~1 the repository flag and the method string disagree. \num{505} half
 Heuslers carry a nominally first-principles label, but only \num{289} carry a method string that
 positively identifies a transport calculation; \num{214} (\SI{42}{\percent}) carry \emph{only} a
 semi-empirical estimate, and two more (\ce{LaSeCl} and \ce{NaSrP}) are labelled merely as an
@@ -172,7 +172,7 @@ database, since prototype decorations record that a structure was \emph{generate
 phase forms. A compound also recorded in a non-cubic space group is flagged: \ce{MgAgSb} (space
 groups 129 and 216) and \ce{DySbPd} (186, 194 and 216) are both dimorphic, and a cubic calculation
 cannot be compared to a measurement of a distorted phase without saying so. Half and full Heuslers
-are separated by the measured site ratio rather than by formula appearance, since a binary in space
+are separated by the measured site ratio, not by formula appearance, since a binary in space
 group 225 is fluorite, not a Heusler. Values below \SI{200}{\kelvin} are excluded, because the
 boundary-free conductivity returned by a transport calculation diverges as $T\to 0$ when Umklapp
 scattering freezes out, while the measurement becomes boundary-limited and therefore specific to
@@ -203,7 +203,8 @@ rather than constants of nature: across leave-one-chemistry-out refits $c$ stays
 \SI{300}{\kelvin} is therefore well determined and its temperature dependence is not, and we report
 both ranges rather than only the flattering one.
 
-It is worth stating plainly what Eq.~\eqref{eq:transfer} is not. A Callaway grey-boundary
+Equation~\eqref{eq:transfer} is not, however, a boundary-scattering model, and the reason is a
+bound rather than a preference. A Callaway grey-boundary
 treatment~\cite{callaway1959model} with a single boundary length gives a suppression
 $S = \Lambda_\mathrm{b}/(\Lambda+\Lambda_\mathrm{b})$ which, with $\Lambda \propto 1/T$, has
 logarithmic slope $1-S$ at \SI{300}{\kelvin}---so a boundary model reproducing $S(300)=c$ must have
@@ -285,8 +286,50 @@ calibrated is for the cubic phase. Third, no constituent may be an actinide or o
 radioactive, for which the corpus contains no training example.
 
 Of the \num{51} half Heuslers with both a measurement and a calculation, \num{38} satisfy these
-conditions. All three screens are applied identically to the validation set and to every issued
-prediction, and none was chosen after inspecting the results.
+conditions. These three screens are applied identically to the validation set and to every issued
+prediction, and none was chosen after inspecting the results. Section~\ref{sec:screening} adds two
+further conditions before a prediction is \emph{issued}---that the bonding family already contains
+validated members, and that the value falls inside the range that family has been measured in---and
+those two are properties of the prediction pipeline rather than of the domain. They are stated, and
+tested, where they are used.
+
+Several sub-populations of these \num{38} recur in what follows, and because the accuracy figures
+quoted for them are not comparable across populations, Table~\ref{tab:populations} defines each
+once.
+
+\begin{table}[tb]
+  \centering
+  \caption{The compound populations used in this paper. Every accuracy figure is quoted over one of
+  these, and figures over different rows are not directly comparable---a point that matters most
+  when the method is set against the family baseline, which is defined only on the \num{31}.}
+  \label{tab:populations}
+  \begin{tabular}{clp{0.56\linewidth}}
+    \toprule
+    $n$ & name & definition \\
+    \midrule
+    \num{742} & half-Heusler corpus & any thermal-conductivity record of any kind \\
+    \num{289} & calculated & carries a full Boltzmann-transport calculation \\
+    \num{52}  & measured & has ever been measured in a laboratory \\
+    \midrule
+    \num{51}  & matched & has both a measurement and a calculated value \\
+    \num{38}  & \textbf{in-domain} & the \num{51} after the three domain screens; \textbf{the blind
+                test set, and the population behind every headline figure} \\
+    \num{13}  & excluded & the remainder of the \num{51}, scored separately in
+                Section~\ref{sec:failure} \\
+    \midrule
+    \num{34}  & published-matched & of the \num{38}, those also carrying a temperature-matched
+                \emph{published} transport value; the offset of Section~\ref{sec:offset} and the
+                deployed-route scores of Section~\ref{sec:deployed} \\
+    \num{31}  & family-covered & of the \num{38}, those whose $(\mathrm{Y},\mathrm{Z})$ family holds
+                at least two other measured members; the only population on which the family
+                baseline is defined \\
+    \num{28}  & curve-resolved & of the \num{38}, those with at least five measured temperatures
+                spanning \SI{300}{\kelvin} \\
+    \num{21}  & semi-empirically covered & of the \num{38}, those carrying a published Slack or
+                Debye--Callaway estimate \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Supplying a calculation where none exists}
 \label{sec:model}
@@ -308,7 +351,7 @@ injects a \SI{41}{\percent} error into every length descriptor and \SI{183}{\per
 volume-derived ones. The lattice parameter is therefore never emitted as a descriptor in either
 convention, and volume per atom carries the same physics while being convention-independent.
 Bond-length descriptors in turn require explicit atomic coordinates, and where a record lacked them
-we supply the ideal $C1_b$ positions rather than let the features fall through as missing---six
+we supply the ideal $C1_b$ positions instead of letting the features fall through as missing---six
 compounds were previously scored on \num{41} of \num{45} descriptors for want of this.
 
 The training pool is \num{4921} compound--temperature rows over \num{686} compounds spanning
@@ -320,7 +363,7 @@ a reference value and carry no reported statistic, so admitting them bends no ti
 pool is likewise not restricted to half Heuslers, since the descriptors are structural and
 compositional rather than prototype-specific; held-out scoring is always on half Heuslers alone.
 
-Whether the choice of regressor matters is a question we tested rather than assumed. Four model
+Whether the choice of regressor matters is a question we tested. Four model
 families---gradient-boosted trees in two implementations, kernel ridge regression and a Gaussian
 process---were trained on identical rows and descriptors under the same grouped cross-validation,
 on the \num{4765}-row transport part of the pool alone. They do not agree on a winner: CatBoost has
