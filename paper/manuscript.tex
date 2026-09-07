@@ -13,8 +13,8 @@
 % The second fails on an undefined citation key, a DOI that no longer resolves, or a citation
 % with no recorded supporting sentence in claims_ledger.csv. All three are blocking.
 %
-% AUTHOR BLOCK IS A PLACEHOLDER. Fill in the name and any co-authors before sharing. The
-% affiliation is inferred from the corresponding e-mail domain and should be confirmed.
+% Authors and affiliations are set. ORCIDs: Shivam Randive and Himanshu Pandey are recorded in
+% the frontmatter comment; Ojaswini Randive's is still awaited.
 % =============================================================================================
 
 % `authoryear` puts natbib in author-year mode, which contradicts \bibliographystyle{elsarticle-num}
@@ -37,8 +37,8 @@
 \sisetup{group-separator = {,}, group-minimum-digits = 4}
 
 % =============================================================================================
-% THE THREE THINGS THAT MUST BE FILLED IN BEFORE SUBMISSION.
-% All three are rendered into the PDF, so each is defined here rather than left inline where it
+% WHAT MUST STILL BE FILLED IN BEFORE SUBMISSION (two items).
+% Both are rendered into the PDF, so each is defined here rather than left inline where it
 % can be missed. check_tex_structure.py fails the build while any of them still says TO BE ADDED.
 % =============================================================================================
 % Authors are Shivam Randive (corresponding), Himanshu Pandey, Ojaswini Randive -- set in the
@@ -79,7 +79,7 @@
 % record. Kept here so they are not lost:
 %   Shivam Randive    0009-0005-1403-4484   (checksum verified)
 %   Ojaswini Randive  awaiting
-%   Himanshu Pandey   awaiting
+%   Himanshu Pandey   0000-0002-7380-366X   (checksum verified)
 \author[svnit]{Shivam Randive\corref{cor1}}
 \ead{i22ph019@phy.svnit.ac.in}
 \author[nitrr]{Ojaswini Randive}
@@ -120,8 +120,9 @@ The measurements analysed here are not ours. Across the whole corpus they were m
 publications---of which \num{164} lie behind the \num{52} measured half Heuslers the calibration is
 fitted to---and the transport calculations we calibrate come from a further \num{22}. All are
 included in the reference list below so that the provenance claim of Section~\ref{sec:dataset} can
-be checked rather than taken on trust. Every row of the released corpus carries the digital object
-identifier of the work it came from.
+be checked rather than taken on trust. Every measured row of the released corpus carries the
+digital object identifier of the work it came from; calculated rows drawn from public databases
+carry a source URL instead, since those repositories are not identified by DOI.
 
 \input{section7_provenance}
 
