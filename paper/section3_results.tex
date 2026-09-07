@@ -44,7 +44,7 @@ the data. The accuracy figures below are scored under a stricter arrangement, wi
 calibration refitted for each held-out chemistry; across those refits $c$ varies only between
 \num{0.48} and \num{0.51}.
 
-\begin{figure}[tb]
+\begin{figure*}[tp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig02_offset.pdf}
   \caption{\textbf{Published transport calculations exceed laboratory measurements by a median
@@ -55,7 +55,7 @@ calibration refitted for each held-out chemistry; across those refits $c$ varies
   measurement row, since a few heavily sampled compounds (\ce{TiNiSn} \num{753} rows,
   \ce{ZrNiSn} \num{646}) would otherwise dominate.}
   \label{fig:offset}
-\end{figure}
+\end{figure*}
 
 \subsection{Blind-test accuracy}
 \label{sec:blind}
@@ -79,7 +79,7 @@ centred and not merely closer. Under the tighter criterion
 of \SI{30}{\percent}, the fraction rises from \SI{21.1}{\percent} to \SI{42.1}{\percent}, so two
 compounds in five are predicted to within a third.
 
-\begin{table}[tb]
+\begin{table*}[tp]
   \centering
   \caption{Blind-test performance inside the declared domain of applicability. Every compound is
   predicted with its entire chemistry cluster withheld from training, and all nulls are fitted with
@@ -112,7 +112,7 @@ compounds in five are predicted to within a third.
     \multicolumn{5}{l}{\footnotesize $^{\ddagger}$ on the \num{31} compounds whose bonding family
       has $\geq 2$ other measured members; see Section~\ref{sec:familynull}.}
   \end{tabular}
-\end{table}
+\end{table*}
 
 Figure~\ref{fig:curves} shows what this means for individual compounds. Nine are drawn at the
 tercile boundaries of the error distribution---the three best, three central and three worst of the
@@ -125,7 +125,7 @@ one of the spread. It also shows plainly what the method does not deliver. The p
 visibly flatter than the measurements in several panels, because Eq.~\eqref{eq:transfer} carries a
 single global exponent; the magnitude is corrected, the shape is not.
 
-\begin{figure}[tb]
+\begin{figure*}[tp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig03_curves.pdf}
   \caption{\textbf{The calibrated prediction lands on the measured magnitude; the temperature
@@ -137,7 +137,7 @@ single global exponent; the magnitude is corrected, the shape is not.
   middle and hardest thirds of the error distribution, drawn at the tercile boundaries;
   per-compound median error is given in each panel.}
   \label{fig:curves}
-\end{figure}
+\end{figure*}
 
 \subsection{Comparison with baselines}
 \label{sec:vsnulls}
@@ -258,7 +258,7 @@ concentrate: the holdout unit throughout is the X site, not the $(\mathrm{Y},\ma
 family members remain in training when a compound is held out and the family error is an
 interpolation figure rather than an extrapolation test.
 
-\begin{figure}[tb]
+\begin{figure*}[tp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig04_blind.pdf}
   \caption{\textbf{\SI{86.8}{\percent} of in-domain compounds are predicted within a factor of
@@ -269,7 +269,7 @@ interpolation figure rather than an extrapolation test.
   five-seed median of Table~\ref{tab:blind}, whereas panels (a) and (b) are necessarily drawn from
   a single seed.}
   \label{fig:blind}
-\end{figure}
+\end{figure*}
 
 Five modifications intended to repair these failures were implemented and evaluated under the same
 protocol, and none survived it. A hurdle model treating low- and high-conductivity compounds
@@ -353,7 +353,7 @@ and \ce{TbNiSb} rest on a single calculated temperature, so their values at \SI{
 \SI{900}{\kelvin} would carry only the global exponent and no compound-specific temperature
 dependence, and are not quoted. Only \ce{ErSbPt} and \ce{HoSbPt} support a curve.
 
-\begin{table}[tb]
+\begin{table*}[tp]
   \centering
   \caption{Predicted lattice thermal conductivity at \SI{300}{\kelvin} for half Heuslers with a
   published transport calculation and no measurement. All five fall inside the range their own
@@ -373,9 +373,9 @@ dependence, and are not quoted. Only \ce{ErSbPt} and \ce{HoSbPt} support a curve
     \ce{TbNiSb} & \ce{Ni}--\ce{Sb} & 9.06 & \textbf{4.62} & 3.53--6.05 & 2.06--10.35 \\
     \bottomrule
   \end{tabular}
-\end{table}
+\end{table*}
 
-\begin{figure}[tb]
+\begin{figure*}[tp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig05_predictions.pdf}
   \caption{\textbf{The five issued predictions, drawn inside the measurements that license
@@ -389,7 +389,7 @@ dependence, and are not quoted. Only \ce{ErSbPt} and \ce{HoSbPt} support a curve
   are drawn as points with their interval; where two coincide their horizontal separation is
   cosmetic. The ordinate is logarithmic because the transfer function is multiplicative.}
   \label{fig:predictions}
-\end{figure}
+\end{figure*}
 
 \subsection{Candidates we decline, and the measurement that would qualify them}
 \label{sec:refusals}
@@ -410,13 +410,15 @@ rule does not separate good predictions from bad (\SI{29.6}{\percent} against \S
 $p=\num{0.35}$). We keep it because withholding a prediction costs nothing and issuing a wrong one
 costs a synthesis, but a reader who weighs that differently has the margins.
 
-\begin{table}[tb]
+\begin{table*}[tp]
   \centering
   \caption{The eleven declined candidates and the condition each fails. Flagged compounds have a
   calibrated value that we do not issue; refused compounds are ones for which we decline to compute
   one.}
   \label{tab:refusals}
-  \begin{tabular}{lll}
+  % The third column holds full sentences, so it needs an explicit width. Left as `l' it sets on a
+  % single line and runs past the right margin, which is what overlapped the following paragraph.
+  \begin{tabular}{llp{0.52\linewidth}}
     \toprule
     Compound & Status & Condition failed \\
     \midrule
@@ -434,7 +436,7 @@ costs a synthesis, but a reader who weighs that differently has the margins.
     \ce{USnPt}  & refused  & uranium: no training example in the corpus \\
     \bottomrule
   \end{tabular}
-\end{table}
+\end{table*}
 
 Five predictions from a corpus of \num{742} half Heuslers invites the question of where the rest
 went, and the answer is not a limitation of the method but a statement about the experimental
@@ -460,7 +462,7 @@ literature search behind this case, Section~S2 enumerates the fourteen candidate
 Section~S5 identifies \ce{Bi}--\ce{Pt} as the most \emph{informative} measurement the corpus points
 to, as distinct from the most productive one.
 
-\begin{figure}[tb]
+\begin{figure*}[tp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig06_landscape.pdf}
   \caption{\textbf{Everything the method can say, and what each statement is worth.} Four tiers,
@@ -473,7 +475,7 @@ to, as distinct from the most productive one.
   \SI{50}{\percent} and \SI{90}{\percent} conformal intervals; only the issued tier carries a
   filled prediction marker.}
   \label{fig:landscape}
-\end{figure}
+\end{figure*}
 
 Auditing those candidates surfaced a check we had not been applying anywhere, and it bears on the
 predictions we issue as much as on the ones we withhold. Where a compound has been calculated by

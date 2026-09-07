@@ -30,7 +30,7 @@ Figure~\ref{fig:method} shows the whole procedure together with the property tha
 Measurements and calculations run in separate tracks from the corpus onward and meet only at the
 transfer function, so nothing fitted to a calculation is ever scored against another calculation.
 
-\begin{figure}[tb]
+\begin{figure*}[tp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig08_method.pdf}
   \caption{\textbf{The method, end to end.} Calculations (upper track) and measurements (lower
@@ -43,7 +43,7 @@ transfer function, so nothing fitted to a calculation is ever scored against ano
   compounds down to the five issued predictions; equation numbers refer to
   Section~\ref{sec:method}.}
   \label{fig:method}
-\end{figure}
+\end{figure*}
 
 \subsection{Corpus construction}
 \label{sec:dataset}
@@ -124,7 +124,7 @@ single digitised figure. Overall, Fig.~\ref{fig:corpus} fixes the two facts the 
 works from: calculations outnumber measurements by \num{5.6} to one, and the measurements rest on
 very uneven evidence.
 
-\begin{figure}[tb]
+\begin{figure*}[tp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig01_corpus.pdf}
   \caption{\textbf{First-principles calculations of half-Heusler lattice thermal conductivity
@@ -135,7 +135,7 @@ very uneven evidence.
   (b) Independent publications behind each measured compound. Twenty-seven of \num{52} rest on a
   single source, which sets the evidence tiering used in Section~\ref{sec:results}.}
   \label{fig:corpus}
-\end{figure}
+\end{figure*}
 
 \subsection{Method tiering and quality control}
 \label{sec:tiering}
@@ -197,7 +197,17 @@ grows---that is, as temperature falls. We capture this with two parameters,
 %
 where $c$ sets the room-temperature reduction and $p$ its temperature dependence, and the cap at
 unity enforces the physical requirement that extrinsic scattering can only reduce conductivity.
-Fitted on the in-domain compounds, $c=\num{0.51}$ and $p=\num{0.80}$. Both are fitted quantities
+Fitted on the in-domain compounds, $c=\num{0.51}$ and $p=\num{0.80}$.
+
+The cap is not a formality, and anyone applying Eq.~\eqref{eq:transfer} should know where it binds.
+With these constants $c\,(T/300)^{p}$ reaches unity at $T \approx \SI{696}{\kelvin}$, so above about
+\SI{700}{\kelvin} the transfer function is the identity and no correction is applied at all. That
+regime is not a corner of the data: \num{138} of the \num{333} half-Heusler rows in the blind test
+lie above it, two in five. The reported accuracy therefore averages a corrected low-temperature
+regime with an uncorrected high-temperature one, and $p$ is in effect fitted on the sub-cap rows.
+Section~\ref{sec:limitations} returns to this, since the compounds where the calculation falls
+\emph{below} the measurement---which no downward correction can reach---concentrate in the same
+high-temperature regime. Both are fitted quantities
 rather than constants of nature: across leave-one-chemistry-out refits $c$ stays within
 \numrange{0.48}{0.51} while $p$ ranges over \numrange{0.80}{1.45}. The suppression at
 \SI{300}{\kelvin} is therefore well determined and its temperature dependence is not, and we report
@@ -297,13 +307,14 @@ Several sub-populations of these \num{38} recur in what follows, and because the
 quoted for them are not comparable across populations, Table~\ref{tab:populations} defines each
 once.
 
-\begin{table}[tb]
+\begin{table*}[tp]
   \centering
   \caption{The compound populations used in this paper. Every accuracy figure is quoted over one of
   these, and figures over different rows are not directly comparable---a point that matters most
   when the method is set against the family baseline, which is defined only on the \num{31}.}
   \label{tab:populations}
-  \begin{tabular}{clp{0.56\linewidth}}
+  % 0.56 of the line width, plus the count and name columns, exceeded the text block. 0.46 fits.
+  \begin{tabular}{clp{0.46\linewidth}}
     \toprule
     $n$ & name & definition \\
     \midrule
@@ -329,7 +340,7 @@ once.
                 Debye--Callaway estimate \\
     \bottomrule
   \end{tabular}
-\end{table}
+\end{table*}
 
 \subsection{Supplying a calculation where none exists}
 \label{sec:model}
@@ -380,7 +391,7 @@ shows across model seeds. We retain CatBoost and record that the choice is not l
 Figure~\ref{fig:model} shows both results: which regressor was chosen, and what the retained model
 rests on.
 
-\begin{figure}[tb]
+\begin{figure*}[tp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig07_model.pdf}
   \caption{\textbf{The regression model: which one, and what it uses.} (a)~Four regressors on
@@ -392,7 +403,7 @@ rests on.
   bonds, more atoms per cell and higher temperature all push $\kappa_L$ down---so the fit rests on
   phonon physics rather than on an artefact of the corpus.}
   \label{fig:model}
-\end{figure}
+\end{figure*}
 
 \subsection{Validation, null baselines and prediction intervals}
 \label{sec:validation}
