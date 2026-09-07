@@ -54,8 +54,8 @@ keywords:
   - experimental validation
 
 license: MIT
-license-url: https://github.com/SHIVAM-REPO-OWNER/REPO-NAME/blob/main/LICENSE
-repository-code: https://github.com/SHIVAM-REPO-OWNER/REPO-NAME
+license-url: https://github.com/Shivamrandive747/half-heusler-kappa-calibration/blob/main/LICENSE
+repository-code: https://github.com/Shivamrandive747/half-heusler-kappa-calibration
 version: 1.0.0
 date-released: "2026-09-07"
 # doi: 10.5281/zenodo.XXXXXXX    <- uncomment and fill in after the Zenodo release
